@@ -1,82 +1,112 @@
+*,
+:root {
+    font-family: sans-serif, monospace;
+    font-weight: 500;
+    --content-width: 180px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-content {
+    position: fixed;
+}
+
 .topbar {
-    width: 100%;
-    height: 10px;
-    background-color: white;
-    position: sticky;
-    top: 0;
-    z-index: 999;
+  width: 100%;
+  height: 10px;
+  background-color: white;
+  position: sticky;
+  top: 0;
+  z-index: 999;
 }
 
 .topbarWrapper {
-    height: 100%;
-    padding: 10px 5px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  height: 100%;
+  padding: 10px 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .logo {
-    font-weight: bold;
-    font-size: 30px;
-    color: darkblue;
-    cursor: pointer;
+  font-weight: bold;
+  font-size: 30px;
+  color: darkblue;
+  cursor: pointer;
 }
 
 .sidebar {
-    flex: 1;
-    height: calc(100vh - 50px);
-    width: 250px;
-    position: sticky;
+  height: calc(100vh - 50px);
+  width: var(--content-width);
+  position: fixed;
 }
 
 .sidebarWrapper {
-    padding: 40px 10px;
-    color: #555;
+  padding: 40px 10px;
+  color: #555;
 }
 
 .sidebarMenu {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .sidebarTitle {
-    font-size: 16px;
-    color: rgb(187, 186, 186);
+  font-size: 16px;
+  color: rgb(187, 186, 186);
 }
 
 .sidebarList {
-    list-style: none;
-    padding: 5px;
-    font-size: 14px;
+  list-style: none;
+  padding: 5px;
+  font-size: 14px;
 }
 
 .sidebarLink {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .sidebarListItem {
-    padding: 5px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    border-radius: 10px;
+  padding: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
 }
 
 a .sidebarLink,
+.signout-link,
 .sidebarListItem.active,
 .sidebarListItem:hover {
-    background: rgb(228, 228, 250);
+  background: rgb(228, 228, 250);
 }
 
 .sidebarIcon {
-    margin-right: 5px;
-    font-size: 20px !important;
+  margin-right: 5px;
+  font-size: 20px !important;
 }
 
-.sidebarList:last-child() {
-   padding-top: 50px;
+.signout-link {
+  position: fixed;
+  bottom: 20px;
+  text-decoration: none;
+  align-items: center;
+  padding: 8px;
+  background-color: #f4f4f4;
+  border-radius: 5px;
 }
 
 .content {
-    flex: 4;
-    left: 250px;
+  left: var(--content-width);
+}
+
+.menu-btn {
+    cursor: pointer;
+    top: 5px;
+    left: var(--content-width);
+    position: relative;
+    font-size: 25px;
 }
