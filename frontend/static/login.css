@@ -1,4 +1,62 @@
-* {
-    margin: 0;
-    padding: 0;
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: darkslategrey;
+  font-family: sans-serif, monospace;
+}
+
+.login-wrapper {
+  padding: 15px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+
+.logo-content {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.icon {
+  font-size: 60px;
+  border-radius: 50%;
+}
+
+input {
+  display: block;
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  color: #020101;
+}
+
+input,
+input::placeholder {
+  font-size: 15px;
+  font-family: monospace;
+  letter-spacing: 2px;
+}
+
+input::placeholder {
+  color: #555;
+}
+
+button {
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  background-color: #4caf50;
+  width: 100%;
+  font-size: 16px;
 }
