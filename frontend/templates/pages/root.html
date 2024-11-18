@@ -1,12 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet"/>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="static/pages/root.css" />
     {% block head %} {% endblock %}
-</head>
-<body>
-    {% block content %} {% endblock %}
-</body>
+  </head>
+  <body>
+    <div class="container">
+      <div class="topbar">
+        <div class="topbarWrapper">
+          <div class="topLeft">
+            <div class="logo">Car Management</div>
+          </div>
+        </div>
+      </div>
+      <aside class="sidebar">
+        <div class="sidebarWrapper">
+          <div class="sidebarMenu">
+            <h3 class="sidebarTitle">Dashboard</h3>
+            <ul class="sidebarList">
+              <a class="sidebarLink" href="{{ url_for('dashboard') }}">
+                <li class="sidebarListItem active">
+                    <span class="sidebarIcon"></span>
+                    Home
+                  </li>
+              </a>
+              <a class="sidebarLink" href="{{ url_for('clients') }}">
+                <li class="sidebarListItem">
+                    <span class="sidebarIcon"></span>
+                    Clients
+                  </li>
+              </a>
+            </ul>
+          </div>
+          <div class="sidebarMenu">
+            <h3 class="sidebarTitle">Settings</h3>
+            <ul class="sidebarList">
+                <a class="sidebarLink" href="{{ url_for('services') }}">
+                    <li class="sidebarListItem">
+                        <span class="sidebarIcon"></span>
+                        Services
+                      </li>
+                  </a>
+                  <a class="sidebarLink" href="{{ url_for('transactions') }}">
+                    <li class="sidebarListItem">
+                        <span class="sidebarIcon"></span>
+                        Transactions
+                      </li>
+                  </a>
+                  <a class="sidebarLink" href="{{ url_for('reports') }}">
+                    <li class="sidebarListItem">
+                        <span class="sidebarIcon"></span>
+                        Reports
+                      </li>
+                  </a>
+                  <a class="sidebarLink" href="{{ url_for('staff') }}">
+                    <li class="sidebarListItem">
+                        <span class="sidebarIcon"></span>
+                        Staff
+                      </li>
+                  </a>
+                  <a class="sidebarLink" href="">
+                    <li class="sidebarListItem">
+                        <span class="sidebarIcon"></span>
+                        Sign-out
+                      </li>
+                  </a>
+            </ul>
+          </div>
+        </div>
+      </aside>
+
+      <div class="content">{% block content %} {% endblock %}</div>
+    </div>
+  </body>
 </html>

@@ -20,6 +20,37 @@ async def root(request: Request):
 async def login():
     pass
 
+@app.get("/dashboard", response_class=HTMLResponse)
+async def dashboard(request: Request):
+    return templates.TemplateResponse(
+        "pages/dashboard.html", 
+        {
+            "request": request,
+            "title": "Dashboard"
+        }
+    )
+
+@app.get("/clients", response_class=HTMLResponse)
+async def clients(request: Request):
+    return templates.TemplateResponse("pages/clients.html", {"request": request})
+
+@app.get("/services", response_class=HTMLResponse)
+async def services(request: Request):
+    return templates.TemplateResponse("pages/services.html", {"request": request})
+
+@app.get("/transactions", response_class=HTMLResponse)
+async def transactions(request: Request):
+    return templates.TemplateResponse("pages/transactions.html", {"request": request})
+
+@app.get("/reports", response_class=HTMLResponse)
+async def reports(request: Request):
+    return templates.TemplateResponse("pages/reports.html", {"request": request})
+
+@app.get("/staff", response_class=HTMLResponse)
+async def staff(request: Request):
+    return templates.TemplateResponse("pages/staff.html", {"request": request})
+
+
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)
+    uvicorn.run("main:app", host="localhost", port=8000, reload=True)
