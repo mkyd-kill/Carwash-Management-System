@@ -1,41 +1,31 @@
 *,
 :root {
-    font-family: sans-serif, monospace;
-    font-weight: 500;
-    --content-width: 200px;
+  font-family: sans-serif, monospace;
+  --content-width: 200px;
 }
 
 .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .navbar-content {
-    position: fixed;
+  position: fixed;
 }
 
 .topbar {
   width: 100%;
-  height: 10px;
-  background-color: white;
+  height: 7px;
   position: sticky;
   z-index: 99;
-  margin-top: 5px;
-}
-
-.topbarWrapper {
-  height: 100%;
-  padding: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  padding: 3px 7px;
 }
 
 .logo {
   font-weight: bold;
   font-size: 30px;
-  color: darkblue;
+  color: darkslategrey;
   cursor: pointer;
 }
 
@@ -43,26 +33,23 @@
   height: calc(100vh - 50px);
   width: var(--content-width);
   position: fixed;
+  margin: 8px 0;
 }
 
 .sidebarWrapper {
-  padding: 40px 10px;
-  color: #555;
-}
-
-.sidebarMenu {
-  margin-bottom: 10px;
+  padding: 15px 5px;
 }
 
 .sidebarTitle {
-  font-size: 16px;
-  color: rgb(187, 186, 186);
+  font-size: 1rem;
+  color: rgb(82, 73, 73);
+  letter-spacing: 1px;
 }
 
 .sidebarList {
   list-style: none;
-  padding: 5px;
-  font-size: 14px;
+  padding: 0 3px;
+  font-size: 1.1rem;
 }
 
 .sidebarLink {
@@ -70,23 +57,22 @@
 }
 
 .sidebarListItem {
-  padding: 8px;
+  padding: 8px 5px;
   cursor: pointer;
   display: flex;
   align-items: center;
-  border-radius: 10px;
 }
 
 a .sidebarLink,
-.signout-link,
 .sidebarListItem.active,
 .sidebarListItem:hover {
-  background: rgb(228, 228, 250);
+  background: rgb(174, 226, 243);
+  color: black;
 }
 
 .sidebarIcon {
   margin-right: 5px;
-  font-size: 20px !important;
+  font-size: 1rem;
 }
 
 .signout-link {
@@ -94,21 +80,24 @@ a .sidebarLink,
   bottom: 20px;
   text-decoration: none;
   align-items: center;
-  padding: 8px;
-  background-color: #f4f4f4;
+  padding: 5px;
   border-radius: 5px;
 }
 
 .content {
-    position: absolute;
-    left: var(--content-width);
-    top: 10px;
+  position: absolute;
+  left: var(--content-width);
+  top: 10px;
 }
 
 .menu-btn {
-    cursor: pointer;
-    top: 5px;
-    position: relative;
-    font-size: 25px;
-    left: 0;
+  cursor: pointer;
+  top: 5px;
+  position: relative;
+  left: 0;
+}
+
+.menu-btn .sidebarIcon {
+  font-size: 1.7rem;
+  font-weight: bold;
 }

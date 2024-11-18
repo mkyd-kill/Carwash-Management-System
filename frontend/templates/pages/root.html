@@ -3,7 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <link rel="stylesheet" href="static/pages/root.css" />
     {% block head %} {% endblock %}
   </head>
@@ -13,76 +19,111 @@
         <div class="topbar">
           <div class="topbarWrapper">
             <div class="topLeft">
-              <div class="logo">CarWash</div>
+              <div class="logo">Car Wash</div>
             </div>
           </div>
         </div>
         <aside class="sidebar">
           <div class="sidebarWrapper">
             <div class="sidebarMenu">
-              <h3 class="sidebarTitle">Dashboard</h3>
+              <h3 class="sidebarTitle">Overview</h3>
               <ul class="sidebarList">
                 <a class="sidebarLink" href="{{ url_for('dashboard') }}">
                   <li class="sidebarListItem">
-                      <span class="sidebarIcon">
-                        <i class="fa-solid fa-house"></i>
-                      </span>
-                      Home
-                    </li>
+                    <span class="sidebarIcon">
+                      <i class="fa-solid fa-house"></i>
+                    </span>
+                    Home
+                  </li>
                 </a>
-                <a class="sidebarLink" href="{{ url_for('clients') }}">
+                <a class="sidebarLink" href="{{ url_for('sales') }}">
                   <li class="sidebarListItem">
-                      <span class="sidebarIcon">
-                        <i class="fa-solid fa-users"></i>
-                      </span>
-                      Clients
-                    </li>
+                    <span class="sidebarIcon">
+                      <i class="fa-solid fa-cart-shopping"></i>
+                    </span>
+                    Sales
+                  </li>
                 </a>
               </ul>
             </div>
+
+            <hr width="80%" size="1" color="#bbb9b9">
+
             <div class="sidebarMenu">
-              <h3 class="sidebarTitle">Settings</h3>
+              <h3 class="sidebarTitle">System</h3>
               <ul class="sidebarList">
-                  <a class="sidebarLink" href="{{ url_for('services') }}">
-                      <li class="sidebarListItem">
-                          <span class="sidebarIcon">
-                            <i class="fa-solid fa-gears"></i>
-                          </span>
-                          Services
-                        </li>
-                    </a>
-                    <a class="sidebarLink" href="{{ url_for('transactions') }}">
-                      <li class="sidebarListItem">
-                          <span class="sidebarIcon">
-                            <i class="fa-solid fa-coins"></i>
-                          </span>
-                          Transactions
-                        </li>
-                    </a>
-                    <a class="sidebarLink" href="{{ url_for('reports') }}">
-                      <li class="sidebarListItem">
-                          <span class="sidebarIcon">
-                            <i class="fa-solid fa-file-invoice"></i>
-                          </span>
-                          Reports
-                        </li>
-                    </a>
-                    <a class="sidebarLink" href="{{ url_for('staff') }}">
-                      <li class="sidebarListItem">
-                          <span class="sidebarIcon">
-                            <i class="fa-solid fa-users-gear"></i>
-                          </span>
-                          Staff
-                        </li>
-                    </a>
-                    <a class="sidebarLink signout-link" href="">
-                      <li class="sidebarListItem">
-                        <span class="sidebarIcon">
-                          <i class="fa-solid fa-right-from-bracket"></i>
-                        </span>
-                        Sign-out
-                      </li>
-                    </a>
+                <a class="sidebarLink" href="{{ url_for('clients') }}">
+                  <li class="sidebarListItem">
+                    <span class="sidebarIcon">
+                      <i class="fa-solid fa-users"></i>
+                    </span>
+                    Clients
+                  </li>
+                </a>
+                <a class="sidebarLink" href="{{ url_for('services') }}">
+                  <li class="sidebarListItem">
+                    <span class="sidebarIcon">
+                      <i class="fa-regular fa-bookmark"></i>
+                    </span>
+                    Services
+                  </li>
+                </a>
+                <a class="sidebarLink" href="{{ url_for('transactions') }}">
+                  <li class="sidebarListItem">
+                    <span class="sidebarIcon">
+                      <i class="fa-solid fa-coins"></i>
+                    </span>
+                    Transactions
+                  </li>
+                </a>
+                <a class="sidebarLink" href="{{ url_for('reports') }}">
+                  <li class="sidebarListItem">
+                    <span class="sidebarIcon">
+                      <i class="fa-regular fa-file-lines"></i>
+                    </span>
+                    Reports
+                  </li>
+                </a>
+              </ul>
+            </div>
+
+            <hr width="80%" size="1" color="#bbb9b9">
+
+            <div class="sidebarMenu">
+              <h3 class="sidebarTitle">Management</h3>
+              <ul class="sidebarList">
+                <a class="sidebarLink" href="{{ url_for('staff') }}">
+                  <li class="sidebarListItem">
+                    <span class="sidebarIcon">
+                      <i class="fa-solid fa-layer-group"></i>
+                    </span>
+                    Branches
+                  </li>
+                </a>
+                <a class="sidebarLink" href="{{ url_for('staff') }}">
+                  <li class="sidebarListItem">
+                    <span class="sidebarIcon">
+                      <i class="fa-solid fa-users-gear"></i>
+                    </span>
+                    Team Members
+                  </li>
+                </a>
+                <a class="sidebarLink" href="{{ url_for('staff') }}">
+                  <li class="sidebarListItem">
+                    <span class="sidebarIcon">
+                      <i class="fa-solid fa-gear"></i>
+                    </span>
+                    Settings
+                  </li>
+                </a>
+                <a class="sidebarLink signout-link" href="">
+                  <li class="sidebarListItem">
+                    <span class="sidebarIcon">
+                      <i class="fa-solid fa-right-from-bracket"></i>
+                    </span>
+                    Sign-out
+                  </li>
+                </a>
               </ul>
             </div>
           </div>
@@ -113,6 +154,6 @@
         sideBar.style.display = isOpen ? "none" : "block";
         dashboardContent.style.left = isOpen ? "10px" : "var(--content-width)";
       });
-    </script>    
+    </script>
   </body>
 </html>

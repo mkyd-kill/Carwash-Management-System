@@ -30,6 +30,10 @@ async def dashboard(request: Request):
         }
     )
 
+@app.get("/sales", response_class=HTMLResponse)
+async def sales(request: Request):
+    return templates.TemplateResponse("pages/sales.html", {"request": request})
+
 @app.get("/clients", response_class=HTMLResponse)
 async def clients(request: Request):
     return templates.TemplateResponse("pages/clients.html", {"request": request})
