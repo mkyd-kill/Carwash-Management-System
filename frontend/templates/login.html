@@ -1,27 +1,35 @@
-{% extends "base.html" %} {% block head %}
-<title>Login Page</title>
-<link rel="stylesheet" href="static/login.css">
-{% endblock %} {% block content %}
-<div class="login-wrapper">
-  <div class="logo-content">
-    <span class="icon">
-        <i class="ri-car-washing-fill"></i>
-    </span>
-  </div>
-  <div class="login-form-details">
-    <div class="welcome-intro">
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae,
-        veritatis?
-      </p>
-    </div>
-    <div class="login-form">
-      <form action="{{ url_for('login') }}" method="POST" autocapitalize="off" autocomplete="off">
-        <input type="text" placeholder="username" required/>
-        <input type="password" placeholder="password" required/>
-        <button type="submit">Login</button>
-      </form>
-    </div>
-  </div>
-</div>
-{% endblock %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet"/>
+    <title>Login Page</title>
+    <link rel="stylesheet" href="static/login.css">
+</head>
+<body>
+    <div class="login-wrapper">
+        <div class="logo-content">
+          <span class="icon">
+              <i class="ri-car-washing-fill"></i>
+          </span>
+        </div>
+        <div class="login-form-details">
+          <div class="welcome-intro">
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae,
+              veritatis?
+            </p>
+          </div>
+          <div class="login-form">
+            <form action="{{ url_for('login') }}" method="POST" autocapitalize="off" autocomplete="off">
+              <input type="text" placeholder="username" required/>
+              <input type="password" placeholder="password" required/>
+              <button type="submit">Login</button>
+            </form>
+          </div>
+        </div>
+      </div>
+</body>
+</html>
