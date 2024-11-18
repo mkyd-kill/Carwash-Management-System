@@ -2,7 +2,7 @@
 :root {
     font-family: sans-serif, monospace;
     font-weight: 500;
-    --content-width: 180px;
+    --content-width: 200px;
 }
 
 .container {
@@ -20,13 +20,13 @@
   height: 10px;
   background-color: white;
   position: sticky;
-  top: 0;
-  z-index: 999;
+  z-index: 99;
+  margin-top: 5px;
 }
 
 .topbarWrapper {
   height: 100%;
-  padding: 10px 5px;
+  padding: 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -100,13 +100,15 @@ a .sidebarLink,
 }
 
 .content {
-  left: var(--content-width);
+    position: absolute;
+    left: var(--content-width);
+    top: 10px;
 }
 
 .menu-btn {
     cursor: pointer;
     top: 5px;
-    left: var(--content-width);
     position: relative;
     font-size: 25px;
+    left: 0;
 }

@@ -100,6 +100,8 @@
     </div>
 
     <script>
+      let sideBar = document.querySelector(".navbar-content");
+      let dashboardContent = document.querySelector(".content");
       let menuBtn = document.querySelector(".menu-btn i");
       menuBtn.addEventListener("click", () => {
         menuBtn.classList.toggle("active");
@@ -107,6 +109,9 @@
 
         menuBtn.classList.toggle("fa-bars", !isOpen);
         menuBtn.classList.toggle("fa-times", isOpen);
+
+        sideBar.style.display = isOpen ? "none" : "block";
+        dashboardContent.style.left = isOpen ? "10px" : "var(--content-width)";
       });
     </script>    
   </body>
