@@ -1,7 +1,27 @@
-*,
-:root {
+* {
   font-family: sans-serif, monospace;
+}
+
+:root {
   --content-width: 200px;
+  --top-distance: 10px;
+  --top-icon-size: 1.7rem;
+  --top-icon-weight: bold;
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f2f2f2;
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 20px;
 }
 
 .container {
@@ -90,14 +110,23 @@ a .sidebarLink,
   top: 10px;
 }
 
+.closebar {
+  position: fixed;
+  padding: 8px 0;
+  top: 0;
+  background-color: whitesmoke;
+  width: 100%;
+  border-radius: 10px;
+}
+
 .menu-btn {
   cursor: pointer;
-  top: 5px;
-  position: relative;
+  top: var(--top-distance);
   left: 0;
+  padding: 0 10px;
 }
 
 .menu-btn .sidebarIcon {
-  font-size: 1.7rem;
-  font-weight: bold;
+  font-size: var(--top-icon-size);
+  font-weight: var(--top-icon-weight);
 }

@@ -1,47 +1,177 @@
 {% extends "pages/root.html" %} {% block head %}
-<link rel="stylesheet" href="static/pages/dashboard.css">
+<link rel="stylesheet" href="static/pages/dashboard.css" />
 <title>{{ title }}</title>
 {% endblock %} {% block content %}
 <div class="cardbar">
-    <div class="cardbarWrapper">
-        <div class="cardbarMenu">
-            <div class="cardbarDetails">
-                <div class="cardbarDetail">
-                    <h2 class="cardData">600</h2>
-                    <h3 class="cardTitle">Total Sales</h3>
-                </div>
-                <div class="cardbarIcon">
-                    <span class="cardbarDetailIcon"></span>
-                </div>
-            </div>
-            <div class="cardbarDetails">
-                <div class="cardbarDetail">
-                    <h2 class="cardData">KSH. 60,000</h2>
-                    <h3 class="cardTitle">Revenue Today</h3>
-                </div>
-                <div class="cardbarIcon">
-                    <span class="cardbarDetailIcon"></span>
-                </div>
-            </div>
-            <div class="cardbarDetails">
-                <div class="cardbarDetail">
-                    <h2 class="cardData">100</h2>
-                    <h3 class="cardTitle">Sales Today</h3>
-                </div>
-                <div class="cardbarIcon">
-                    <span class="cardbarDetailIcon"></span>
-                </div>
-            </div>
-            <div class="cardbarDetails">
-                <div class="cardbarDetail">
-                    <h2 class="cardData">350</h2>
-                    <h3 class="cardTitle">Clients Served</h3>
-                </div>
-                <div class="cardbarIcon">
-                    <span class="cardbarDetailIcon"></span>
-                </div>
-            </div>
+  <!-- CARDS -->
+  <div class="cardbarWrapper">
+    <div class="cardbarMenu">
+      <div class="cardbarDetails">
+        <div class="cardbarDetail">
+          <h3 class="cardTitle">Total Sales</h3>
+          <h2 class="cardData"><b class="sign">KSH.</b> 600</h2>
+          <p class="info-msg">All time</p>
         </div>
+        <div class="cardbarIcon">
+          <span class="cardbarDetailIcon">
+            <i class="fa-solid fa-chart-simple"></i>
+          </span>
+        </div>
+      </div>
+      <div class="cardbarDetails">
+        <div class="cardbarDetail">
+          <h3 class="cardTitle">Revenue Today</h3>
+          <h2 class="cardData"><b class="sign">KSH.</b> 1000</h2>
+          <p class="info-msg">Last 24 Hr</p>
+        </div>
+        <div class="cardbarIcon">
+          <span class="cardbarDetailIcon">
+            <i class="fa-solid fa-sack-dollar"></i>
+          </span>
+        </div>
+      </div>
+      <div class="cardbarDetails">
+        <div class="cardbarDetail">
+          <h3 class="cardTitle">Sales Today</h3>
+          <h2 class="cardData"><b class="sign">KSH.</b> 300</h2>
+          <p class="info-msg">Last 24 Hr</p>
+        </div>
+        <div class="cardbarIcon">
+          <span class="cardbarDetailIcon">
+            <i class="fa-solid fa-money-bill-trend-up"></i>
+          </span>
+        </div>
+      </div>
+      <div class="cardbarDetails">
+        <div class="cardbarDetail">
+          <h3 class="cardTitle">Clients Served</h3>
+          <h2 class="cardData">350</h2>
+          <p class="info-msg">Last 24 Hr</p>
+        </div>
+        <div class="cardbarIcon">
+          <span class="cardbarDetailIcon">
+            <i class="fa-solid fa-user-group"></i>
+          </span>
+        </div>
+      </div>
+      <div class="cardbarDetails">
+        <div class="cardbarDetail">
+          <h3 class="cardTitle">Total Services</h3>
+          <h2 class="cardData">150</h2>
+          <p class="info-msg">All time</p>
+        </div>
+        <div class="cardbarIcon">
+          <span class="cardbarDetailIcon">
+            <i class="fa-regular fa-bookmark"></i>
+          </span>
+        </div>
+      </div>
     </div>
+  </div>
+
+  <!-- CHARTS -->
+  <div class="graphAnalytics">
+    <div class="clientAnalytics">
+      <div class="top">
+        <h3 class="chartTitle">Client Analytics</h3>
+        <div class="refreshButton">
+          <span class="refresh">
+            <i class="fa-solid fa-rotate-right"></i>
+          </span>
+        </div>
+      </div>
+      <div class="bottom">
+        <div class="chartTable">
+          <canvas class="clients-chart"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="salesAnalytics">
+      <div class="top">
+        <h3 class="chartTitle">Sales Analytics</h3>
+        <div class="refreshButton">
+          <span class="refresh">
+            <i class="fa-solid fa-rotate-right"></i>
+          </span>
+        </div>
+      </div>
+      <div class="bottom">
+        <div class="chartTable">
+          <canvas class="sales-chart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+{% endblock %} {% block script %}
+<script>
+  const stx = document.getElementsByClassName("sales-chart");
+  const ctx = document.getElementsByClassName("clients-chart");
+
+  new Chart(stx, {
+    type: "bar",
+    data: {
+      labels: [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+      ],
+      datasets: [
+        {
+          label: "sales per month",
+          data: [
+            1345, 3528, 8470, 7287, 4096, 2032, 3095, 1700, 7728, 8898, 1202,
+            7818,
+          ],
+          borderWidth: 0,
+        },
+      ],
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+    },
+  });
+
+  new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels: [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday",
+      ],
+      datasets: [
+        {
+          label: "clients per week",
+          data: [45, 28, 70, 77, 96, 32, 95],
+          borderWidth: 0,
+        },
+      ],
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+    },
+  });
+</script>
 {% endblock %}
