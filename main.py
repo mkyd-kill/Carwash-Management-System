@@ -22,38 +22,75 @@ async def login():
 
 @app.get("/dashboard", response_class=HTMLResponse)
 async def dashboard(request: Request):
-    return templates.TemplateResponse(
-        "pages/dashboard.html", 
-        {
+    data = {
             "request": request,
             "title": "Dashboard"
-        }
-    )
+    }
+    return templates.TemplateResponse("pages/dashboard.html", data)
 
 @app.get("/sales", response_class=HTMLResponse)
 async def sales(request: Request):
-    return templates.TemplateResponse("pages/sales.html", {"request": request})
+    data = {
+            "request": request,
+            "title": "Sales"
+    }
+    return templates.TemplateResponse("pages/sales.html", data)
 
 @app.get("/clients", response_class=HTMLResponse)
 async def clients(request: Request):
-    return templates.TemplateResponse("pages/clients.html", {"request": request})
+    data = {
+            "request": request,
+            "title": "Clients"
+    }
+    return templates.TemplateResponse("pages/clients.html", data)
 
 @app.get("/services", response_class=HTMLResponse)
 async def services(request: Request):
-    return templates.TemplateResponse("pages/services.html", {"request": request})
+    data = {
+            "request": request,
+            "title": "Services"
+    }
+    return templates.TemplateResponse("pages/services.html", data)
 
 @app.get("/transactions", response_class=HTMLResponse)
 async def transactions(request: Request):
-    return templates.TemplateResponse("pages/transactions.html", {"request": request})
+    data = {
+            "request": request,
+            "title": "Transactions"
+    }
+    return templates.TemplateResponse("pages/transactions.html", data)
 
 @app.get("/reports", response_class=HTMLResponse)
 async def reports(request: Request):
-    return templates.TemplateResponse("pages/reports.html", {"request": request})
+    data = {
+            "request": request,
+            "title": "Reports"
+    }
+    return templates.TemplateResponse("pages/reports.html", data)
 
 @app.get("/staff", response_class=HTMLResponse)
 async def staff(request: Request):
-    return templates.TemplateResponse("pages/staff.html", {"request": request})
+    data = {
+            "request": request,
+            "title": "Staff"
+    }
+    return templates.TemplateResponse("pages/staff.html", data)
 
+@app.get("/branch", response_class=HTMLResponse)
+async def branch(request: Request):
+    data = {
+            "request": request,
+            "title": "Branch"
+    }
+    return templates.TemplateResponse("pages/staff.html", data)
+
+@app.get("/settings", response_class=HTMLResponse)
+async def settings(request: Request):
+    data = {
+            "request": request,
+            "title": "Settings"
+    }
+    return templates.TemplateResponse("pages/staff.html", data)
 
 if __name__ == "__main__":
     import uvicorn
