@@ -25,6 +25,7 @@
             <th data-column="id" data-order="desc">#</th>
             <th data-column="name" data-order="desc">Name</th>
             <th data-column="cost" data-order="desc">Cost</th>
+            <th data-column="commission" data-order="desc">Commission</th>
             <th data-column="sales" data-order="desc">Sales</th>
             <th data-column="revenue" data-order="desc">Revenue</th>
             <th data-column="status" data-order="desc">Status</th>
@@ -40,26 +41,26 @@
 {% endblock %} {% block script %}
 <script>
   const dummyData = [
-    { id: 1, name: "cleaning", cost: 2000, sales: 5, revenue: 10000, status: "offered" },
-    { id: 2, name: "servicing", cost: 500, sales: 6, revenue: 3000, status: "offered" },
-    { id: 3, name: "buffing", cost: 1000, sales: 8, revenue: 8000, status: "offered" },
-    { id: 4, name: "oiling", cost: 3000, sales: 3, revenue: 9000, status: "offered" },
-    { id: 5, name: "riming", cost: 1500, sales: 3, revenue: 4500, status: "offered" },
-    { id: 6, name: "engine bay", cost: 5000, sales: 5, revenue: 25000, status: "offered" },
-    { id: 7, name: "window cleaning", cost: 200, sales: 20, revenue: 4000, status: "offered" },
-    { id: 8, name: "interior vacuuming", cost: 1000, sales: 15, revenue: 15000, status: "offered" },
-    { id: 9, name: "tyre shining", cost: 500, sales: 12, revenue: 6000, status: "offered" },
-    { id: 10, name: "seat shampooing", cost: 2500, sales: 8, revenue: 20000, status: "offered" },
-    { id: 11, name: "dashboard polishing", cost: 1500, sales: 10, revenue: 15000, status: "offered" },
-    { id: 12, name: "carpet cleaning", cost: 1200, sales: 6, revenue: 7200, status: "offered" },
-    { id: 13, name: "underbody wash", cost: 3000, sales: 5, revenue: 15000, status: "offered" },
-    { id: 14, name: "engine steam cleaning", cost: 3500, sales: 4, revenue: 14000, status: "offered" },
-    { id: 15, name: "paint protection", cost: 5000, sales: 2, revenue: 10000, status: "offered" },
-    { id: 16, name: "headlight restoration", cost: 2000, sales: 3, revenue: 6000, status: "offered" },
-    { id: 17, name: "body waxing", cost: 4000, sales: 6, revenue: 24000, status: "offered" },
-    { id: 18, name: "odour removal", cost: 1500, sales: 7, revenue: 10500, status: "offered" },
-    { id: 19, name: "scratch removal", cost: 5000, sales: 2, revenue: 10000, status: "offered" },
-    { id: 20, name: "roof lining cleaning", cost: 2500, sales: 5, revenue: 12500, status: "offered" },
+    { id: 1, name: "cleaning", cost: 2000, commission: 200, sales: 5, revenue: 10000, status: "offered" },
+    { id: 2, name: "servicing", cost: 500, commission: 50, sales: 6, revenue: 3000, status: "offered" },
+    { id: 3, name: "buffing", cost: 1000, commission: 100, sales: 8, revenue: 8000, status: "offered" },
+    { id: 4, name: "oiling", cost: 3000, commission: 300, sales: 3, revenue: 9000, status: "offered" },
+    { id: 5, name: "riming", cost: 1500, commission: 150, sales: 3, revenue: 4500, status: "offered" },
+    { id: 6, name: "engine bay", cost: 5000, commission: 500, sales: 5, revenue: 25000, status: "offered" },
+    { id: 7, name: "window cleaning", cost: 200, commission: 20, sales: 20, revenue: 4000, status: "offered" },
+    { id: 8, name: "interior vacuuming", cost: 1000, commission: 100, sales: 15, revenue: 15000, status: "offered" },
+    { id: 9, name: "tyre shining", cost: 500, commission: 50, sales: 12, revenue: 6000, status: "offered" },
+    { id: 10, name: "seat shampooing", cost: 2500, commission: 250, sales: 8, revenue: 20000, status: "offered" },
+    { id: 11, name: "dashboard polishing", cost: 1500, commission: 150, sales: 10, revenue: 15000, status: "offered" },
+    { id: 12, name: "carpet cleaning", cost: 1200, commission: 120, sales: 6, revenue: 7200, status: "offered" },
+    { id: 13, name: "underbody wash", cost: 3000, commission: 300, sales: 5, revenue: 15000, status: "offered" },
+    { id: 14, name: "engine steam cleaning", cost: 3500, commission: 350, sales: 4, revenue: 14000, status: "offered" },
+    { id: 15, name: "paint protection", cost: 5000, commission: 500, sales: 2, revenue: 10000, status: "offered" },
+    { id: 16, name: "headlight restoration", cost: 2000, commission: 200, sales: 3, revenue: 6000, status: "offered" },
+    { id: 17, name: "body waxing", cost: 4000, commission: 400, sales: 6, revenue: 24000, status: "offered" },
+    { id: 18, name: "odour removal", cost: 1500, commission: 150, sales: 7, revenue: 10500, status: "offered" },
+    { id: 19, name: "scratch removal", cost: 5000, commission: 500, sales: 2, revenue: 10000, status: "offered" },
+    { id: 20, name: "roof lining cleaning", cost: 2500, commission: 250, sales: 5, revenue: 12500, status: "offered" },
   ];
 
   const dataBody = document.querySelector(".dataBody");
@@ -72,6 +73,7 @@
       <td>${service.id}</td>
       <td>${service.name}</td>
       <td>${service.cost.toLocaleString()}</td>
+      <td>${service.commission.toLocaleString()}</td>
       <td>${service.sales}</td>
       <td>${service.revenue.toLocaleString()}</td>
       <td><span class="status">${service.status}</status></td>
