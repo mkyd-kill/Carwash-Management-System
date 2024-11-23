@@ -1,4 +1,98 @@
 {% extends "pages/root.html" %} {% block head %}
 <title>{{ title }}</title>
+<link rel="stylesheet" href="static/pages/clients.css" />
 {% endblock %} {% block content %}
+<div class="clientsContainer">
+  <div class="clientsWrapper">
+    <div class="clientsHeader">
+      <div class="leftBar">
+        <h2 class="clientsTitle">Clients</h2>
+        <span class="clientsInfo">List of clients who have been served.</span>
+      </div>
+    </div>
+    <div class="clientsTableWrapper">
+      <table class="clientsTable">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Car Model</th>
+            <th>Car Plate</th>
+            <th>Service Availed</th>
+            <th>Date of Service</th>
+            <th>Total Paid (KSH)</th>
+            <th>Mode of Payment</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody class="clientsTableBody">
+          <!-- Dynamically populated client rows -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %} {% block script %}
+<script>
+  const clients = [
+    {
+      id: 1,
+      name: "John Doe",
+      phone: "+254712345678",
+      carModel: "Toyota Prado",
+      carPlate: "KDB 123A",
+      service: "Full Wash",
+      date: "2024-11-01",
+      totalPaid: 2500,
+      paymentMode: "M-Pesa"
+    },
+    {
+      id: 2,
+      name: "Jane Kimani",
+      phone: "+254722345123",
+      carModel: "Mazda Demio",
+      carPlate: "KCY 456B",
+      service: "Interior Vacuum",
+      date: "2024-11-05",
+      totalPaid: 1500,
+      paymentMode: "Airtel Money"
+    },
+    {
+      id: 3,
+      name: "Michael Otieno",
+      phone: "+254732123456",
+      carModel: "Mercedes Benz",
+      carPlate: "KDE 789C",
+      service: "Exterior Wash",
+      date: "2024-11-10",
+      totalPaid: 2000,
+      paymentMode: "Cash"
+    },
+  ];
+
+  const tbody = document.querySelector(".clientsTableBody");
+
+  clients.forEach((client) => {
+    const row = document.createElement("tr");
+
+    row.innerHTML = `
+    <td>${client.id}</td>
+    <td>${client.name}</td>
+    <td>${client.phone}</td>
+    <td>${client.carModel}</td>
+    <td>${client.carPlate}</td>
+    <td>${client.service}</td>
+    <td>${client.date}</td>
+    <td>${client.totalPaid.toLocaleString()}</td>
+    <td>${client.paymentMode}</td>
+    <td>
+      <button class="actionBtn editBtn">Edit</button>
+      <button class="actionBtn deleteBtn">Delete</button>
+    </td>
+  `;
+
+    tbody.appendChild(row);
+  });
+</script>
 {% endblock %}
