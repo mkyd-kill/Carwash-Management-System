@@ -82,7 +82,7 @@ async def branch(request: Request):
             "request": request,
             "title": "Branch"
     }
-    return templates.TemplateResponse("pages/staff.html", data)
+    return templates.TemplateResponse("pages/branch.html", data)
 
 @app.get("/settings", response_class=HTMLResponse)
 async def settings(request: Request):
@@ -90,7 +90,7 @@ async def settings(request: Request):
             "request": request,
             "title": "Settings"
     }
-    return templates.TemplateResponse("pages/staff.html", data)
+    return templates.TemplateResponse("pages/settings.html", data)
 
 if __name__ == "__main__":
     import uvicorn

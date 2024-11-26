@@ -1,15 +1,15 @@
-.clientsContainer {
+.staffContainer {
   padding: 10px;
   background-color: #f8f9fc;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.clientsWrapper {
+.staffWrapper {
   width: 100%;
 }
 
-.clientsHeader {
+.staffHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -21,22 +21,48 @@
   flex-direction: column;
 }
 
-.clientsTitle {
+.staffTitle {
   font-size: 24px;
   font-weight: bold;
   color: #343a40;
 }
 
-.clientsInfo {
+.staffInfo {
   font-size: 14px;
   color: #6c757d;
 }
 
-.clientsTableWrapper {
+.rightBar {
+  display: flex;
+  align-items: center;
+}
+
+.addstaffBtn {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.addstaffBtn:hover {
+  background-color: #0056b3;
+}
+
+.addIcon {
+  margin-right: 8px;
+}
+
+.staffTableWrapper {
   overflow-x: auto;
 }
 
-.clientsTable {
+.staffTable {
   width: 100%;
   border-collapse: collapse;
   background-color: #ffffff;
@@ -44,24 +70,24 @@
   overflow: hidden;
 }
 
-.clientsTable th,
-.clientsTable td {
+.staffTable th,
+.staffTable td {
   text-align: left;
   padding: 12px 15px;
   border: 1px solid #e9ecef;
   font-size: 14px;
 }
 
-.clientsTable th {
+.staffTable th {
   background-color: #f1f3f5;
   color: #495057;
 }
 
-.clientsTable td {
+.staffTable td {
   color: #495057;
 }
 
-.clientsTable tbody tr:hover {
+.staffTable tbody tr:hover {
   background-color: #f8f9fa;
 }
 
@@ -74,6 +100,12 @@
   cursor: pointer;
 }
 
+.editBtn {
+  background-color: #ffc107;
+}
+
 .deleteBtn {
   background-color: #dc3545;
+  margin-bottom: 5px;
+  display: none;
 }

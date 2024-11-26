@@ -1,3 +1,234 @@
 {% extends "pages/root.html" %} {% block head %}
 <title>{{ title }}</title>
-{% endblock %} {% block content %} {% endblock %}
+<link rel="stylesheet" href="static/pages/staff.css" />
+{% endblock %} {% block content %}
+<div class="staffContainer">
+  <div class="staffWrapper">
+    <div class="staffHeader">
+      <div class="leftBar">
+        <h2 class="staffTitle">Staff</h2>
+        <span class="staffInfo">List of staff</span>
+      </div>
+      <div class="rightBar">
+        <button class="addstaffBtn">
+          <span class="addIcon">
+            <i class="fa-solid fa-plus"></i>
+          </span>
+          Add New Staff
+        </button>
+      </div>
+    </div>
+    <div class="staffTableWrapper">
+      <table class="staffTable">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Staff ID</th>
+            <th>Name</th>
+            <th>Role</th>
+            <th>Department</th>
+            <th>Contact Number</th>
+            <th>Commission (KSH)</th>
+            <th>Salary (KSH)</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody class="staffTableBody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %} {% block script %}
+<script>
+  const staffData = [
+    {
+      id: 1,
+      staffID: "EMP001",
+      name: "John Mwangi",
+      role: "Cleaner",
+      department: "Washing",
+      contact: "0712345678",
+      commission: 200,
+      salary: 15000,
+      status: "Active",
+    },
+    {
+      id: 2,
+      staffID: "EMP002",
+      name: "Jane Wanjiru",
+      role: "Cashier",
+      department: "Administration",
+      contact: "0723456789",
+      commission: 0,
+      salary: 25000,
+      status: "Active",
+    },
+    {
+      id: 3,
+      staffID: "EMP003",
+      name: "Peter Otieno",
+      role: "Supervisor",
+      department: "Management",
+      contact: "0734567890",
+      commission: 500,
+      salary: 40000,
+      status: "Active",
+    },
+    {
+      id: 4,
+      staffID: "EMP004",
+      name: "Grace Muthoni",
+      role: "Receptionist",
+      department: "Customer Service",
+      contact: "0745678901",
+      commission: 0,
+      salary: 20000,
+      status: "Active",
+    },
+    {
+      id: 5,
+      staffID: "EMP005",
+      name: "Samuel Njuguna",
+      role: "Technician",
+      department: "Maintenance",
+      contact: "0756789012",
+      commission: 300,
+      salary: 30000,
+      status: "Active",
+    },
+    {
+      id: 6,
+      staffID: "EMP006",
+      name: "Diana Njeri",
+      role: "Cleaner",
+      department: "Washing",
+      contact: "0767890123",
+      commission: 250,
+      salary: 15000,
+      status: "On Leave",
+    },
+    {
+      id: 7,
+      staffID: "EMP007",
+      name: "Brian Ochieng",
+      role: "Accountant",
+      department: "Finance",
+      contact: "0778901234",
+      commission: 0,
+      salary: 45000,
+      status: "Active",
+    },
+    {
+      id: 8,
+      staffID: "EMP008",
+      name: "Lucy Wambui",
+      role: "Car Detailer",
+      department: "Washing",
+      contact: "0789012345",
+      commission: 300,
+      salary: 18000,
+      status: "Active",
+    },
+    {
+      id: 9,
+      staffID: "EMP009",
+      name: "George Omondi",
+      role: "Security Guard",
+      department: "Security",
+      contact: "0790123456",
+      commission: 0,
+      salary: 12000,
+      status: "Active",
+    },
+    {
+      id: 10,
+      staffID: "EMP010",
+      name: "Pauline Akinyi",
+      role: "Cleaner",
+      department: "Washing",
+      contact: "0701234567",
+      commission: 200,
+      salary: 15000,
+      status: "Active",
+    },
+    {
+      id: 11,
+      staffID: "EMP011",
+      name: "Francis Mwenda",
+      role: "Mechanic",
+      department: "Maintenance",
+      contact: "0712345670",
+      commission: 400,
+      salary: 35000,
+      status: "Active",
+    },
+    {
+      id: 12,
+      staffID: "EMP012",
+      name: "Sarah Kimani",
+      role: "Car Detailer",
+      department: "Washing",
+      contact: "0723456781",
+      commission: 300,
+      salary: 18000,
+      status: "Active",
+    },
+    {
+      id: 13,
+      staffID: "EMP013",
+      name: "Kevin Mutua",
+      role: "Cleaner",
+      department: "Washing",
+      contact: "0734567892",
+      commission: 200,
+      salary: 15000,
+      status: "On Leave",
+    },
+    {
+      id: 14,
+      staffID: "EMP014",
+      name: "Catherine Wanjala",
+      role: "Supervisor",
+      department: "Washing",
+      contact: "0745678903",
+      commission: 500,
+      salary: 38000,
+      status: "Active",
+    },
+    {
+      id: 15,
+      staffID: "EMP015",
+      name: "Vincent Ndungu",
+      role: "Cleaner",
+      department: "Washing",
+      contact: "0756789014",
+      commission: 250,
+      salary: 15000,
+      status: "Active",
+    },
+  ];
+
+  const tbody = document.querySelector(".staffTableBody");
+
+  staffData.forEach((staff) => {
+    const row = document.createElement("tr");
+
+    row.innerHTML = `
+    <td>${staff.id}</td>
+    <td>${staff.staffID}</td>
+    <td>${staff.name}</td>
+    <td>${staff.role}</td>
+    <td>${staff.department}</td>
+    <td>${staff.contact}</td>
+    <td>${staff.commission.toLocaleString()}</td>
+    <td>${staff.salary.toLocaleString()}</td>
+    <td>${staff.status}</td>
+    <td>
+      <button class="actionBtn editBtn">View</button>
+    </td>
+  `;
+    tbody.appendChild(row);
+  });
+</script>
+{% endblock %}
