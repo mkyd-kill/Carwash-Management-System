@@ -1,3 +1,184 @@
 {% extends "pages/root.html" %} {% block head %}
 <title>{{ title }}</title>
-{% endblock %} {% block content %} {% endblock %}
+<link rel="stylesheet" href="static/pages/transactions.css" />
+{% endblock %} {% block content %}
+<div class="transactionContainer">
+  <div class="transactionWrapper">
+    <div class="transactionHeader">
+      <div class="leftBar">
+        <h2 class="transactionTitle">Transactions</h2>
+        <span class="transactionInfo">List of transaction.</span>
+      </div>
+    </div>
+    <div class="transactionTableWrapper">
+      <table class="transactionTable">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Transaction ID</th>
+            <th>Service</th>
+            <th>Staff</th>
+            <th>Vehicle</th>
+            <th>Date of Transaction</th>
+            <th>Payment Method</th>
+            <th>Cost (KSH)</th>
+            <th>Discount (KSH)</th>
+            <th>Total Paid (KSH)</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody class="transactionTableBody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %} {% block script %}
+<script>
+  const transactions = [
+    {
+      id: 1,
+      transactionID: "TRX001",
+      service: "Full Body Wash",
+      staff: "John Doe",
+      vehicle: "KDA 123A",
+      dateTime: "2024-11-05",
+      paymentMethod: "Cash",
+      cost: 1500,
+      discount: 100,
+      totalPaid: 1400,
+    },
+    {
+      id: 2,
+      transactionID: "TRX002",
+      service: "Interior Cleaning",
+      staff: "Jane Smith",
+      vehicle: "KCC 456B",
+      dateTime: "2024-11-05",
+      paymentMethod: "M-Pesa",
+      cost: 2000,
+      discount: 0,
+      totalPaid: 2000,
+    },
+    {
+      id: 3,
+      transactionID: "TRX003",
+      service: "Engine Bay Cleaning",
+      staff: "Samuel Njuguna",
+      vehicle: "KBX 789C",
+      dateTime: "2024-11-05",
+      paymentMethod: "Credit Card",
+      cost: 3000,
+      discount: 500,
+      totalPaid: 2500,
+    },
+    {
+      id: 4,
+      transactionID: "TRX004",
+      service: "Rim Polishing",
+      staff: "Alice Wanjiku",
+      vehicle: "KDY 123D",
+      dateTime: "2024-11-05",
+      paymentMethod: "Cash",
+      cost: 1000,
+      discount: 0,
+      totalPaid: 1000,
+    },
+    {
+      id: 5,
+      transactionID: "TRX005",
+      service: "Waxing",
+      staff: "James Mwangi",
+      vehicle: "KAZ 456E",
+      dateTime: "2024-11-05",
+      paymentMethod: "M-Pesa",
+      cost: 4000,
+      discount: 500,
+      totalPaid: 3500,
+    },
+    {
+      id: 6,
+      transactionID: "TRX006",
+      service: "Vacuum Cleaning",
+      staff: "Ann Mutua",
+      vehicle: "KCL 789F",
+      dateTime: "2024-11-05",
+      paymentMethod: "Cash",
+      cost: 1200,
+      discount: 0,
+      totalPaid: 1200,
+    },
+    {
+      id: 7,
+      transactionID: "TRX007",
+      service: "Interior & Exterior Wash",
+      staff: "Peter Otieno",
+      vehicle: "KBL 123G",
+      dateTime: "2024-11-05",
+      paymentMethod: "M-Pesa",
+      cost: 3500,
+      discount: 500,
+      totalPaid: 3000,
+    },
+    {
+      id: 8,
+      transactionID: "TRX008",
+      service: "Underbody Cleaning",
+      staff: "Grace Njeri",
+      vehicle: "KCN 456H",
+      dateTime: "2024-11-05",
+      paymentMethod: "Credit Card",
+      cost: 2500,
+      discount: 0,
+      totalPaid: 2500,
+    },
+    {
+      id: 9,
+      transactionID: "TRX009",
+      service: "Buffing",
+      staff: "Michael Karani",
+      vehicle: "KBQ 789J",
+      dateTime: "2024-11-05",
+      paymentMethod: "Cash",
+      cost: 3000,
+      discount: 300,
+      totalPaid: 2700,
+    },
+    {
+      id: 10,
+      transactionID: "TRX010",
+      service: "Full Detail Package",
+      staff: "Caroline Mwende",
+      vehicle: "KCE 123K",
+      dateTime: "2024-11-05",
+      paymentMethod: "M-Pesa",
+      cost: 10000,
+      discount: 1000,
+      totalPaid: 9000,
+    },
+  ];
+
+  const tbody = document.querySelector(".transactionTableBody");
+
+  transactions.forEach((transaction) => {
+    const row = document.createElement("tr");
+
+    row.innerHTML = `
+    <td>${transaction.id}</td>
+    <td>${transaction.transactionID}</td>
+    <td>${transaction.service}</td>
+    <td>${transaction.staff}</td>
+    <td>${transaction.vehicle}</td>
+    <td>${transaction.dateTime}</td>
+    <td>${transaction.paymentMethod}</td>
+    <td>${transaction.cost.toLocaleString()}</td>
+    <td>${transaction.discount.toLocaleString()}</td>
+    <td>${transaction.totalPaid.toLocaleString()}</td>
+    <td>
+      <button class="actionBtn editBtn">View</button>
+    </td>
+  `;
+
+    tbody.appendChild(row);
+  });
+</script>
+{% endblock %}

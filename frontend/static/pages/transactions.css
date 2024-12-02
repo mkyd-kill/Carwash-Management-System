@@ -1,0 +1,79 @@
+.transactionContainer {
+  padding: 10px;
+  background-color: #f8f9fc;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.transactionWrapper {
+  width: 100%;
+}
+
+.transactionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.leftBar {
+  display: flex;
+  flex-direction: column;
+}
+
+.transactionTitle {
+  font-size: 24px;
+  font-weight: bold;
+  color: #343a40;
+}
+
+.transactionInfo {
+  font-size: 14px;
+  color: #6c757d;
+}
+
+.transactionTableWrapper {
+  overflow-x: auto;
+}
+
+.transactionTable {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.transactionTable th,
+.transactionTable td {
+  text-align: left;
+  padding: 12px 15px;
+  border: 1px solid #e9ecef;
+  font-size: 14px;
+}
+
+.transactionTable th {
+  background-color: #f1f3f5;
+  color: #495057;
+}
+
+.transactionTable td {
+  color: #495057;
+}
+
+.transactionTable tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+.actionBtn {
+  padding: 5px 8px;
+  font-size: 12px;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.editBtn {
+  background-color: #ffc107;
+}
