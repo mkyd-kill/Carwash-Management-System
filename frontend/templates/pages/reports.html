@@ -1,3 +1,65 @@
 {% extends "pages/root.html" %} {% block head %}
 <title>{{ title }}</title>
-{% endblock %} {% block content %} {% endblock %}
+<link rel="stylesheet" href="static/pages/report.css" />
+{% endblock %} {% block content %}
+<div class="reportWrapper">
+  <div class="formWrapper">
+    <form action="" method="post">
+      <div class="inputs">
+        <div class="start">
+            <span class="text">Start Date</span>
+            <input type="date" name="" id="" />
+        </div>
+        <div class="end">
+            <span class="text">End Date</span>
+            <input type="date" name="" id="" />
+        </div>
+      </div>
+      <button type="submit">Generate Report</button>
+    </form>
+  </div>
+  <div class="pdfViewer">
+    <iframe
+      class="pdf"
+      src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/20210101201653/PDF.pdf"
+      width="1000"
+      height="500"
+      allowfullscreen="true"
+    >
+    </iframe>
+  </div>
+</div>
+{% endblock %} {% block script %}
+<script>
+  // Select form elements
+  const form = document.querySelector(".formWrapper form");
+  const [startDateInput, endDateInput] =
+    form.querySelectorAll('input[type="date"]');
+  const pdfViewer = document.querySelector(".pdfViewer iframe");
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const startDate = startDateInput.value;
+    const endDate = endDateInput.value;
+
+    // Validate date inputs
+    if (!startDate || !endDate) {
+      alert("Please select both start and end dates.");
+      return;
+    }
+
+    if (new Date(startDate) > new Date(endDate)) {
+      alert("The start date cannot be later than the end date.");
+      return;
+    }
+
+    // Dynamically update iframe source (example URL)
+    const baseUrl = window.location.href;
+    const reportUrl = `${baseUrl}/generate-report?start=${startDate}&end=${endDate}`;
+    pdfViewer.src = reportUrl;
+
+    alert("Generating the report. Please wait...");
+  });
+</script>
+{% endblock %}
