@@ -1,4 +1,4 @@
-from backend import app, templates
+from backend import app, templates, SessionDep
 from fastapi.responses import HTMLResponse
 from fastapi.requests import Request
 
