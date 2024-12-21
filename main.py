@@ -1,86 +1,14 @@
-from backend import app, templates, SessionDep
-from fastapi.responses import HTMLResponse
-from fastapi.requests import Request
+from backend import app
+from backend.site_maintenance import maintenance
+from backend.root_auth import auth
+from backend.site_services import service
+from backend.site_utils import utils
 
-@app.get("/")
-async def root(request: Request):
-    return templates.TemplateResponse("login.html", {"request": request})
-
-@app.post("/login")
-async def login():
-    pass
-
-@app.get("/dashboard", response_class=HTMLResponse)
-async def dashboard(request: Request):
-    data = {
-            "request": request,
-            "title": "Dashboard"
-    }
-    return templates.TemplateResponse("pages/dashboard.html", data)
-
-@app.get("/sales", response_class=HTMLResponse)
-async def sales(request: Request):
-    data = {
-            "request": request,
-            "title": "Sales"
-    }
-    return templates.TemplateResponse("pages/sales.html", data)
-
-@app.get("/clients", response_class=HTMLResponse)
-async def clients(request: Request):
-    data = {
-            "request": request,
-            "title": "Clients"
-    }
-    return templates.TemplateResponse("pages/clients.html", data)
-
-@app.get("/services", response_class=HTMLResponse)
-async def services(request: Request):
-    data = {
-            "request": request,
-            "title": "Services"
-    }
-    return templates.TemplateResponse("pages/services.html", data)
-
-@app.get("/transactions", response_class=HTMLResponse)
-async def transactions(request: Request):
-    data = {
-            "request": request,
-            "title": "Transactions"
-    }
-    return templates.TemplateResponse("pages/transactions.html", data)
-
-@app.get("/reports", response_class=HTMLResponse)
-async def reports(request: Request):
-    data = {
-            "request": request,
-            "title": "Reports"
-    }
-    return templates.TemplateResponse("pages/reports.html", data)
-
-@app.get("/staff", response_class=HTMLResponse)
-async def staff(request: Request):
-    data = {
-            "request": request,
-            "title": "Staff"
-    }
-    return templates.TemplateResponse("pages/staff.html", data)
-
-@app.get("/branch", response_class=HTMLResponse)
-async def branch(request: Request):
-    data = {
-            "request": request,
-            "title": "Branch"
-    }
-    return templates.TemplateResponse("pages/branch.html", data)
-
-@app.get("/settings", response_class=HTMLResponse)
-async def settings(request: Request):
-    data = {
-            "request": request,
-            "title": "Settings"
-    }
-    return templates.TemplateResponse("pages/settings.html", data)
+# registering route templates
+app.include_router(maintenance)
+app.include_router(auth)
+app.include_router(service)
+app.include_router(utils)
 
 if __name__ == "__main__":
     import uvicorn
