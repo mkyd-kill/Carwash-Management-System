@@ -1,15 +1,17 @@
+from sqlmodel import SQLModel
+
 class CRUD:
-    def __init__(self):
-        pass
+    def __init__(self, model: SQLModel):
+        self.model = model
 
     def create():
         pass
 
-    def read():
+    def read(self, obj_id):
         pass
 
-    def update():
+    def update(self, obj_id):
         pass
 
-    def delete():
+    def delete(self, obj_id):
         pass
