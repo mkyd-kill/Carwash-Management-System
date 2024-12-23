@@ -10,7 +10,7 @@
         <span class="servicesInfo">List of services being offered.</span>
       </div>
       <div class="rightBar">
-        <button class="addserviceBtn">
+        <button class="addserviceBtn" onclick="displayForm();">
           <span class="addIcon">
             <i class="fa-solid fa-plus"></i>
           </span>
@@ -38,6 +38,50 @@
       </table>
     </div>
   </div>
+  <section class="addService">
+    <div class="servicesHeader">
+      <div class="leftBar">
+        <span class="servicesInfo">Add New Service</span>
+      </div>
+      <div class="rightBar">
+        <button class="closeFormBtn" onclick="closeForm();">
+          <span class="addIcon">
+            <i class="fa-solid fa-xmark"></i>
+          </span>
+          X
+        </button>
+      </div>
+    </div>
+    <div class="serviceForm">
+      <form action="" method="POST">
+        <div class="serviceInput">
+          <span>Service Name</span>
+          <input type="text" />
+        </div>
+        <div class="serviceInput">
+          <span>Service Cost (KSH)</span>
+          <input type="number" />
+        </div>
+        <div class="serviceInput">
+          <span>Service Commission (KSH)</span>
+          <input type="number" />
+        </div>
+        <div class="serviceInput">
+          <span>Service Discount (%)</span>
+          <input type="number" />
+        </div>
+        <div class="serviceInput">
+          <span>Service Status</span>
+          <input type="text" />
+        </div>
+        <div class="serviceInput">
+          <span>Service Availability</span>
+          <input type="text" />
+        </div>
+        <button type="submit" class="addserviceBtn">Save Service</button>
+      </form>
+    </div>
+  </section>
 </div>
 {% endblock %} {% block script %}
 <script>
@@ -280,9 +324,7 @@
       <td><span class="status">${service.status}</td>
       <td>
       <span class="${
-        service.availability === "available"
-          ? "availability"
-          : "unavailability"
+        service.availability === "available" ? "availability" : "unavailability"
       }">${service.availability}</span>
     </td>
       <td>
@@ -292,5 +334,25 @@
     `;
     dataBody.appendChild(row);
   });
+
+  // open and close the form
+  let service = document.querySelector(".service");
+  let form = document.querySelector(".addService");
+  let addBtn = document.querySelector(".addserviceBtn");
+  let closeBtn = document.querySelector(".closeFormBtn");
+
+  function displayForm() {
+    addBtn.addEventListener("click", () => {
+      service.style.display = "none";
+      form.style.display = "block";
+    });
+  }
+
+  function closeForm() {
+    closeBtn.addEventListener("click", () => {
+      form.style.display = "none";
+      service.style.display = "block";
+    });
+  }
 </script>
 {% endblock %}

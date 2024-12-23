@@ -130,3 +130,28 @@
   background-color: rgba(248, 109, 109, 0.459);
   color: rgba(0, 100, 0, 0.63);
 }
+
+/* add service section */
+.addService {
+  width: 600px;
+  display: none;
+}
+
+.serviceInput {
+  padding: 10px;
+  display: grid;
+}
+
+.serviceInput span {
+  font-size: 1.125rem;
+  font-family: monospace;
+}
+
+.serviceInput input {
+  font-size: 1.120rem;
+}
+
+.serviceInput input:hover {
+  border: solid 1px lightgreen;
+  transition: ease-in-out;
+}
