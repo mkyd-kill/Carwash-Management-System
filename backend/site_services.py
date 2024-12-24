@@ -28,3 +28,7 @@ async def services(request: Request):
             "title": "Services"
     }
     return templates.TemplateResponse("pages/services.html", data)
+
+@service.post("/add-new-service", response_class=HTMLResponse)
+async def add_new_service(request: Request):
+    return "Url working okay"
