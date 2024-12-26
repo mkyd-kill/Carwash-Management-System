@@ -1,8 +1,9 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, status
 from fastapi.responses import HTMLResponse
 from fastapi.requests import Request
-from . import templates, SessionDependancy
-from .crud import CRUD
+from . import templates, SessionDependancy, crudDependancy
+from typing import List
+from .models import Service
 
 service = APIRouter()
 
@@ -30,6 +31,6 @@ async def services(request: Request):
     }
     return templates.TemplateResponse("pages/services.html", data)
 
-@service.post("/add-new-service", response_class=HTMLResponse)
+@service.post("/add-new-service", response_class=HTMLResponse, status_code=status.HTTP_200_OK)
 async def add_new_service(request: Request, session: SessionDependancy):
-    return "Url working okay"
+    print(request.form)

@@ -4,22 +4,21 @@ from datetime import datetime
 from shortuuid import ShortUUID
 from string import digits
 
-class Clients(SQLModel, table=True):
+class BaseModel(SQLModel):
     id: Optional[int] = Field(default_factory=lambda: ShortUUID(unique=True, max_length=5, alphabet=digits), primary_key=True)
     date_created: Optional[datetime] = Field(default_factory=lambda: datetime.now())
+
+class Clients(BaseModel, table=True):
     vehicle: str = Field(nullable=False)
 
-class Staff(SQLModel, table=True):
-    id: Optional[int] = Field(default_factory=lambda: ShortUUID(unique=True, max_length=5, alphabet=digits), primary_key=True)
-    date_created: Optional[datetime] = Field(default_factory=lambda: datetime.now())
+class Staff(BaseModel, table=True):
     name: str = Field(nullable=False)
 
-class Transaction(SQLModel, table=True):
-    id: Optional[int] = Field(default_factory=lambda: ShortUUID(unique=True, max_length=5, alphabet=digits), primary_key=True)
-    date_created: Optional[datetime] = Field(default_factory=lambda: datetime.now())
+class Transaction(BaseModel, table=True):
     vehicle: str = Field(nullable=False)
 
-class Report(SQLModel, table=True):
-    id: Optional[int] = Field(default_factory=lambda: ShortUUID(unique=True, max_length=5, alphabet=digits), primary_key=True)
-    date_created: Optional[datetime] = Field(default_factory=lambda: datetime.now())
+class Report(BaseModel, table=True):
     report_type: str = Field(nullable=False)
+
+class Service(BaseModel, table=True):
+    name: str = Field(nullable=True)

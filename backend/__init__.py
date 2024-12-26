@@ -5,6 +5,7 @@ from .database import create_database, engine
 from sqlmodel import Session
 from contextlib import asynccontextmanager
 from typing import Annotated
+from .cqrs import crudOperations
 
 # create the database on startup
 @asynccontextmanager
@@ -17,6 +18,10 @@ def get_session():
     with Session(engine) as session:
         yield session
 
+# crud cqrs operations
+def crud_api_operations():
+    return crudOperations()
+
 app = FastAPI(lifespan=lifespan)
 
 # setting up the static dir
@@ -27,3 +32,6 @@ templates = Jinja2Templates(directory="frontend/templates")
 
 # creating a session dependancy
 SessionDependancy = Annotated[Session, Depends(get_session)]
+
+# crud cqrs dependancy
+crudDependancy = Annotated[Session, Depends(crud_api_operations)]
