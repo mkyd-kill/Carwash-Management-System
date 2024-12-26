@@ -26,4 +26,4 @@ app.mount("/static", StaticFiles(directory="frontend/static"), name="static")
 templates = Jinja2Templates(directory="frontend/templates")
 
 # creating a session dependancy
-SessionDep = Annotated[Session, Depends(get_session)]
+SessionDependancy = Annotated[Session, Depends(get_session)]

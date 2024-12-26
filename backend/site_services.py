@@ -1,7 +1,8 @@
 from fastapi import APIRouter
 from fastapi.responses import HTMLResponse
 from fastapi.requests import Request
-from . import templates
+from . import templates, SessionDependancy
+from .crud import CRUD
 
 service = APIRouter()
 
@@ -30,5 +31,5 @@ async def services(request: Request):
     return templates.TemplateResponse("pages/services.html", data)
 
 @service.post("/add-new-service", response_class=HTMLResponse)
-async def add_new_service(request: Request):
+async def add_new_service(request: Request, session: SessionDependancy):
     return "Url working okay"

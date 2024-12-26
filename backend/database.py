@@ -1,7 +1,7 @@
 from sqlmodel import SQLModel, create_engine
 from .models import Clients, Staff, Transaction, Report
 
-database_file_name = "carManagement.db"
+database_file_name = "orm.db"
 database_file_url = f"sqlite:///{database_file_name}"
 
 connect_args = {
