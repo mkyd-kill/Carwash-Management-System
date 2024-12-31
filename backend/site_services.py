@@ -3,7 +3,7 @@ from typing import List
 from sqlmodel import select
 from fastapi.responses import HTMLResponse
 from fastapi.requests import Request
-from . import templates, SessionDependancy, crudDependancy
+from . import templates, SessionDependancy
 from .models import Service
 from .schemas import ServiceForm
 
@@ -18,13 +18,13 @@ async def clients(request: Request):
     return templates.TemplateResponse("pages/clients.html", {"request": request})
 
 @service.get("/services", response_model=List[Service])
-async def services(request: Request, cqrs: crudDependancy, session: SessionDependancy):
+async def services(request: Request, session: SessionDependancy):
     statement = select(Service)
     services = session.exec(statement).all()
     return templates.TemplateResponse("pages/services.html", {"request": request, "services": services})
 
 @service.post("/add-new-service", response_class=HTMLResponse, response_model=Service, status_code=status.HTTP_200_OK)
-async def add_new_service(request: Request, session: SessionDependancy, cqrs: crudDependancy, form: ServiceForm = Depends(ServiceForm.as_form)):
+async def add_new_service(request: Request, session: SessionDependancy, form: ServiceForm = Depends(ServiceForm.as_form)):
     data = {
         "name": form.name,
         "cost": form.cost,
@@ -33,7 +33,6 @@ async def add_new_service(request: Request, session: SessionDependancy, cqrs: cr
         "status": form.status,
         "availability": form.availability
     }
-    # created_item = cqrs.create_obj(Service, session, data)
     created_item = Service(**data)
     session.add(created_item)
     session.commit()
