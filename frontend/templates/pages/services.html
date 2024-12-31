@@ -56,27 +56,27 @@
     <form action="{{ url_for('add_new_service') }}" method="POST">
       <div class="serviceInput">
         <span>Service Name</span>
-        <input type="text" />
+        <input type="text" name="name" />
       </div>
       <div class="serviceInput">
         <span>Service Cost (KSH)</span>
-        <input type="number" />
+        <input type="number" name="cost" />
       </div>
       <div class="serviceInput">
         <span>Service Commission (KSH)</span>
-        <input type="number" />
+        <input type="number" name="commission" />
       </div>
       <div class="serviceInput">
         <span>Service Discount (%)</span>
-        <input type="number" />
+        <input type="number" name="discount" />
       </div>
       <div class="serviceInput">
         <span>Service Status</span>
-        <input type="text" />
+        <input type="text" name="status" />
       </div>
       <div class="serviceInput">
         <span>Service Availability</span>
-        <input type="text" />
+        <input type="text" name="availability" />
       </div>
       <button type="submit" class="addserviceBtn">Save Service</button>
     </form>

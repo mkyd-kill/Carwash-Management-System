@@ -2,19 +2,19 @@ from sqlmodel import SQLModel, select
 from sqlalchemy.exc import NoResultFound
 
 class crudOperations:
-    async def create_obj(model, session, data):
+    async def create_obj(self, model, session, data):
         """
         Create a new entry in the database.
         Returns:
             The newly created object.
         """
         obj = model(**data)
-        await session.add(obj)
-        await session.commit()
-        await session.refresh(obj)
+        session.add(obj)
+        session.commit()
+        session.refresh(obj)
         return obj
 
-    async def read_obj(model, session, obj_id):
+    async def read_obj(self, model, session, obj_id):
         """
         Read an entry by its ID.
         Args:
@@ -28,7 +28,7 @@ class crudOperations:
             raise NoResultFound(f"{model.__name__} with ID {obj_id} not found.")
         return result
     
-    async def read_objs(model, session):
+    async def read_objs(self, model, session):
         """
         Return object entries.
         """
@@ -38,7 +38,7 @@ class crudOperations:
         return items
 
 
-    async def update_obj(model, session, obj_id, data):
+    async def update_obj(self, model, session, obj_id, data):
         """
         Update an existing entry in the database.
         Args:
@@ -53,7 +53,7 @@ class crudOperations:
         session.refresh(obj)
         return obj
 
-    async def delete_obj(model, obj_id, session):
+    async def delete_obj(self, model, obj_id, session):
         """
         Delete an entry from the database.
         Args:

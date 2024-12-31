@@ -34,4 +34,4 @@ templates = Jinja2Templates(directory="frontend/templates")
 SessionDependancy = Annotated[Session, Depends(get_session)]
 
 # crud cqrs dependancy
-crudDependancy = Annotated[Session, Depends(crud_api_operations)]
+crudDependancy = Annotated[crudOperations, Depends(crud_api_operations)]

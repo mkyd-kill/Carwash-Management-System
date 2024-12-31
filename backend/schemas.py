@@ -12,5 +12,32 @@ class UserAdmin(BaseModel):
             password=password
         )
 
-class Service(BaseModel):
+class ServiceForm(BaseModel):
+    name: str
+    cost: int
+    commission: int
+    discount: int
+    status: str
+    availability: str
+
+    @classmethod
+    def as_form(
+        cls,
+        name: str = Form(...),
+        cost: int = Form(...),
+        commission: int = Form(...),
+        discount: int = Form(...),
+        status: str = Form(...),
+        availability: str = Form(...)
+    ):
+        return cls(
+            name=name,
+            cost=cost,
+            commission=commission,
+            discount=discount,
+            status=status,
+            availability=availability
+        )
+    
+class Staff(BaseModel):
     pass

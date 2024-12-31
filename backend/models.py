@@ -1,11 +1,9 @@
 from typing import Optional
 from sqlmodel import SQLModel, Field, Relationship
 from datetime import datetime
-from shortuuid import ShortUUID
-from string import digits
 
 class BaseModel(SQLModel):
-    id: Optional[int] = Field(default_factory=lambda: ShortUUID(unique=True, max_length=5, alphabet=digits), primary_key=True)
+    id: Optional[int] = Field(primary_key=True)
     date_created: Optional[datetime] = Field(default_factory=lambda: datetime.now())
 
 class AdminModel(BaseModel, table=True):
