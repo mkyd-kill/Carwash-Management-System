@@ -8,6 +8,10 @@ class BaseModel(SQLModel):
     id: Optional[int] = Field(default_factory=lambda: ShortUUID(unique=True, max_length=5, alphabet=digits), primary_key=True)
     date_created: Optional[datetime] = Field(default_factory=lambda: datetime.now())
 
+class AdminModel(BaseModel, table=True):
+    username: str = Field(nullable=False)
+    password: str = Field(nullable=False)
+
 class Clients(BaseModel, table=True):
     vehicle: str = Field(nullable=False)
 
@@ -22,3 +26,8 @@ class Report(BaseModel, table=True):
 
 class Service(BaseModel, table=True):
     name: str = Field(nullable=True)
+    cost: int = Field(nullable=True)
+    commission: int = Field(nullable=True)
+    discount: int = Field(nullable=True)
+    status: str = Field(nullable=True)
+    availability: str = Field(nullable=True)

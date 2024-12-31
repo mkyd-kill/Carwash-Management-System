@@ -31,6 +31,15 @@ async def services(request: Request):
     }
     return templates.TemplateResponse("pages/services.html", data)
 
-@service.post("/add-new-service", response_class=HTMLResponse, status_code=status.HTTP_200_OK)
-async def add_new_service(request: Request, session: SessionDependancy):
-    print(request.form)
+@service.post("/add-new-service", response_class=HTMLResponse, response_model=Service, status_code=status.HTTP_200_OK)
+async def add_new_service(request: Request, session: SessionDependancy, cqrs: crudDependancy):
+    data = {
+        "name": request.get["name"],
+        "cost": request.get["cost"],
+        "commission": request.get["commission"],
+        "discount": request.get["discount"],
+        "status": request.get["status"],
+        "availability": request.get["availability"]
+    }
+    created_item = await cqrs.create_obj(Service, session, data)
+    return created_item
