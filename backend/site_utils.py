@@ -7,16 +7,8 @@ utils = APIRouter()
 
 @utils.get("/transactions", response_class=HTMLResponse)
 async def transactions(request: Request):
-    data = {
-            "request": request,
-            "title": "Transactions"
-    }
-    return templates.TemplateResponse("pages/transactions.html", data)
+    return templates.TemplateResponse("pages/transactions.html", {"request": request})
 
 @utils.get("/reports", response_class=HTMLResponse)
 async def reports(request: Request):
-    data = {
-            "request": request,
-            "title": "Reports"
-    }
-    return templates.TemplateResponse("pages/reports.html", data)
+    return templates.TemplateResponse("pages/reports.html", {"request": request})

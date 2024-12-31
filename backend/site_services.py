@@ -9,27 +9,15 @@ service = APIRouter()
 
 @service.get("/sales", response_class=HTMLResponse)
 async def sales(request: Request):
-    data = {
-            "request": request,
-            "title": "Sales"
-    }
-    return templates.TemplateResponse("pages/sales.html", data)
+    return templates.TemplateResponse("pages/sales.html", {"request": request})
 
 @service.get("/clients", response_class=HTMLResponse)
 async def clients(request: Request):
-    data = {
-            "request": request,
-            "title": "Clients"
-    }
-    return templates.TemplateResponse("pages/clients.html", data)
+    return templates.TemplateResponse("pages/clients.html", {"request": request})
 
 @service.get("/services", response_class=HTMLResponse)
 async def services(request: Request):
-    data = {
-            "request": request,
-            "title": "Services"
-    }
-    return templates.TemplateResponse("pages/services.html", data)
+    return templates.TemplateResponse("pages/services.html", {"request": request})
 
 @service.post("/add-new-service", response_class=HTMLResponse, response_model=Service, status_code=status.HTTP_200_OK)
 async def add_new_service(request: Request, session: SessionDependancy, cqrs: crudDependancy):

@@ -7,24 +7,12 @@ maintenance = APIRouter()
 
 @maintenance.get("/branch", response_class=HTMLResponse)
 async def branch(request: Request):
-    data = {
-            "request": request,
-            "title": "Branch"
-    }
-    return templates.TemplateResponse("pages/branch.html", data)
+    return templates.TemplateResponse("pages/branch.html", {"request": request})
 
 @maintenance.get("/settings", response_class=HTMLResponse)
 async def settings(request: Request):
-    data = {
-            "request": request,
-            "title": "Settings"
-    }
-    return templates.TemplateResponse("pages/settings.html", data)
+    return templates.TemplateResponse("pages/settings.html", {"request": request})
 
 @maintenance.get("/staff", response_class=HTMLResponse)
 async def staff(request: Request):
-    data = {
-            "request": request,
-            "title": "Staff"
-    }
-    return templates.TemplateResponse("pages/staff.html", data)
+    return templates.TemplateResponse("pages/staff.html", {"request": request})

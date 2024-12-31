@@ -7,22 +7,18 @@ from .schemas import UserAdmin
 auth = APIRouter()
 
 @auth.get("/")
-def get_login_form(request: Request):
+async def get_login_form(request: Request):
     return templates.TemplateResponse("login.html", {"request": request})
 
 @auth.post("/login", response_class=HTMLResponse)
-def post_login_form(request: Request, form: UserAdmin = Depends(UserAdmin.as_form)):
+async def post_login_form(request: Request, form: UserAdmin = Depends(UserAdmin.as_form)):
     print(form)
     return templates.TemplateResponse("login.html", {"request": request})
 
 @auth.get("/dashboard", response_class=HTMLResponse)
-def dashboard(request: Request):
-    data = {
-            "request": request,
-            "title": "Dashboard"
-    }
-    return templates.TemplateResponse("pages/dashboard.html", data)
+async def dashboard(request: Request):
+    return templates.TemplateResponse("pages/dashboard.html", {"request": request})
 
 @auth.post("/logout", response_class=HTMLResponse)
-def logout(request: Request):
+async def logout(request: Request):
     pass
