@@ -39,6 +39,53 @@
     </div>
   </div>
 </div>
+<section class="addStaff">
+  <div class="staffHeader">
+    <div class="leftBar">
+      <span class="staffInfo">Add New Staff</span>
+    </div>
+    <div class="rightBar">
+      <button class="closeFormBtn addstaffBtn">
+        <span class="addIcon">
+          <i class="fa-solid fa-xmark"></i>
+        </span>
+      </button>
+    </div>
+  </div>
+  <div class="staffForm">
+    <form action="" method="POST">
+      <div class="staffInput">
+        <span>Staff Name</span>
+        <input type="text" name="name" />
+      </div>
+      <div class="staffInput">
+        <span>Staff Role</span>
+        <input type="text" name="role" />
+      </div>
+      <div class="staffInput">
+        <span>Staff Department</span>
+        <input type="text" name="department" />
+      </div>
+      <div class="staffInput">
+        <span>Staff Contact Number</span>
+        <input type="tel" name="number" />
+      </div>
+      <div class="staffInput">
+        <span>Staff Commission (KSH)</span>
+        <input type="number" name="commission">
+      </div>
+      <div class="staffInput">
+        <span>Staff Salary (KSH)</span>
+        <input type="number" name="salary">
+      </div>
+      <div class="staffInput">
+        <span>Staff Status</span>
+        <input type="text" name="status" />
+      </div>
+      <button type="submit" class="addstaffBtn">Save Staff</button>
+    </form>
+  </div>
+</section>
 {% endblock %} {% block script %}
 <script>
   const staffData = [
@@ -229,6 +276,22 @@
     </td>
   `;
     tbody.appendChild(row);
+  });
+
+  // open and close the form
+  let service = document.querySelector(".staffContainer");
+  let form = document.querySelector(".addStaff");
+  let addBtn = document.querySelector(".addstaffBtn");
+  let closeBtn = document.querySelector(".closeFormBtn");
+
+  addBtn.addEventListener("click", () => {
+    service.style.display = "none";
+    form.style.display = "block";
+  });
+
+  closeBtn.addEventListener("click", () => {
+    form.style.display = "none";
+    service.style.display = "block";
   });
 </script>
 {% endblock %}

@@ -12,5 +12,4 @@ engine = create_engine(database_file_url, connect_args=connect_args, echo=True)
 
 # creating the database with tables
 def create_database():
-    print("CREATING DATABASE............")
     SQLModel.metadata.create_all(engine)

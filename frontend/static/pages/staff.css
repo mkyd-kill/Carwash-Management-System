@@ -109,3 +109,33 @@
   margin-bottom: 5px;
   display: none;
 }
+
+/* add staff section */
+.addStaff {
+  width: 600px;
+  display: none;
+  padding: 10px;
+  background-color: #f8f9fc;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.staffInput {
+  padding: 10px;
+  display: grid;
+}
+
+.staffInput span {
+  font-size: 1.125rem;
+  font-family: monospace;
+  padding: 5px;
+}
+
+.staffInput input {
+  font-size: 1.120rem;
+}
+
+.staffInput input:hover {
+  border: solid 1px lightgreen;
+  transition: ease-in-out;
+}

@@ -39,5 +39,5 @@ class ServiceForm(BaseModel):
             availability=availability
         )
     
-class Staff(BaseModel):
+class StaffForm(BaseModel):
     pass
