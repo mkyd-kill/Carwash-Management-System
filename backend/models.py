@@ -15,6 +15,12 @@ class Clients(BaseModel, table=True):
 
 class Staff(BaseModel, table=True):
     name: str = Field(nullable=False)
+    role: str = Field(nullable=False)
+    department: str = Field(nullable=False)
+    contact: str = Field(nullable=False)
+    commission: int = Field(nullable=False)
+    salary: int = Field(nullable=False)
+    status: str = Field(nullable=False)
 
 class Transaction(BaseModel, table=True):
     vehicle: str = Field(nullable=False)
@@ -23,9 +29,9 @@ class Report(BaseModel, table=True):
     report_type: str = Field(nullable=False)
 
 class Service(BaseModel, table=True):
-    name: str = Field(nullable=True)
-    cost: int = Field(nullable=True)
-    commission: int = Field(nullable=True)
-    discount: int = Field(nullable=True)
-    status: str = Field(nullable=True)
-    availability: str = Field(nullable=True)
+    name: str = Field(nullable=False)
+    cost: int = Field(nullable=False)
+    commission: int = Field(nullable=False)
+    discount: int = Field(nullable=False)
+    status: str = Field(nullable=False)
+    availability: str = Field(nullable=False)

@@ -40,4 +40,31 @@ class ServiceForm(BaseModel):
         )
     
 class StaffForm(BaseModel):
-    pass
+    name: str
+    role: str
+    department: str
+    contact: str
+    commission: int
+    salary: int
+    status: str
+
+    @classmethod
+    def as_form(
+        cls,
+        name: str = Form(...),
+        role: str = Form(...),
+        department: str = Form(...),
+        contact: str = Form(...),
+        commission: int = Form(...),
+        salary: int = Form(...),
+        status: str = Form(...)
+    ):
+        return cls(
+            name=name,
+            role=role,
+            department=department,
+            contact=contact,
+            commission=commission,
+            salary=salary,
+            status=status
+        )

@@ -53,7 +53,7 @@
     </div>
   </div>
   <div class="staffForm">
-    <form action="" method="POST">
+    <form action="{{ url_for('add_new_staff') }}" method="POST">
       <div class="staffInput">
         <span>Staff Name</span>
         <input type="text" name="name" />
@@ -68,7 +68,7 @@
       </div>
       <div class="staffInput">
         <span>Staff Contact Number</span>
-        <input type="tel" name="number" />
+        <input type="tel" name="contact" />
       </div>
       <div class="staffInput">
         <span>Staff Commission (KSH)</span>
