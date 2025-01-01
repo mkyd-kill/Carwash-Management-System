@@ -36,4 +36,4 @@ async def add_new_service(request: Request, session: SessionDependancy, form: Se
     created_item = Service(**data)
     session.add(created_item)
     session.commit()
-    return created_item
+    return templates.TemplateResponse("pages/services.html", {"request": request, "services": services})

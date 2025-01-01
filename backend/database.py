@@ -8,7 +8,7 @@ connect_args = {
     "check_same_thread": False
 }
 
-engine = create_engine(database_file_url, connect_args=connect_args, echo=True)
+engine = create_engine(database_file_url, connect_args=connect_args, echo=False)
 
 # creating the database with tables
 def create_database():

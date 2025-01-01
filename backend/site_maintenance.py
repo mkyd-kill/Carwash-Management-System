@@ -33,4 +33,4 @@ async def add_new_staff(request: Request, session: SessionDependancy, form: Staf
     created_staff= Staff(**data)
     session.add(created_staff)
     session.commit()
-    return created_staff
+    return templates.TemplateResponse("pages/staff.html", {"request": request, "message": "Staff Added Successfully"})
