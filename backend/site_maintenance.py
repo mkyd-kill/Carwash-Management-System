@@ -27,6 +27,7 @@ async def staff(request: Request, session: SessionDependancy):
 async def add_new_staff(request: Request, session: SessionDependancy, form: StaffForm = Depends(StaffForm.as_form)):
     data = {
         "name": form.name,
+        "gender": form.gender,
         "role": form.role,
         "department": form.department,
         "contact": form.contact,

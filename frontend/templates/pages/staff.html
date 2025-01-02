@@ -59,6 +59,10 @@
         <input type="text" name="name" />
       </div>
       <div class="staffInput">
+        <span>Staff Gender</span>
+        <input type="text" name="gender">
+      </div>
+      <div class="staffInput">
         <span>Staff Role</span>
         <input type="text" name="role" />
       </div>
@@ -84,6 +88,81 @@
       </div>
       <button type="submit" class="addstaffBtn">Save Staff</button>
     </form>
+  </div>
+</section>
+<section class="viewStaffDetails">
+  <div class="staff-details-wrapper">
+    <div class="rightBar">
+      <button class="returnBtn addstaffBtn">
+        <span class="addIcon">
+          <i class="fa-solid fa-arrow"></i>
+        </span>
+        Return to Employees
+      </button>
+    </div>
+    <div class="card-details">
+      <div class="identity-details">
+        <div class="avatar">
+          <img src="static/img/avatar.jpg" alt="avatar">
+        </div>
+        <div class="minor-details">
+          <div class="staff-id">
+            <span>Staff ID</span>
+            <h3>EMP001</h3>
+          </div>
+          <div class="staff-date-hired">
+            <span>Date Hired</span>
+            <h4 class="date">2024-11-01 11:30:43</h4>
+          </div>
+        </div>
+      </div>
+      <div class="staff-details">
+        <div class="staff-detail">
+          <span>Name: </span>
+          <h2 class="title-name">John Mwangi</h2>
+        </div>
+        <div class="staff-detail">
+          <span>Gender: </span>
+          <h2 class="title-name">Male</h2>
+        </div>
+        <div class="staff-detail">
+          <span>National ID: </span>
+          <h2 class="title-name">21436587</h2>
+        </div>
+        <div class="staff-detail">
+          <span>Role: </span>
+          <h2 class="title-name">Cleaner</h2>
+        </div>
+        <div class="staff-detail">
+          <span>Department: </span>
+          <h2 class="title-name">Washing</h2>
+        </div>
+        <div class="staff-detail">
+          <span>Contact Number: </span>
+          <h2 class="title-name">0712345678</h2>
+        </div>
+        <div class="staff-detail">
+          <span>Commission: </span>
+          <h2 class="title-name">Kshs. 200</h2>
+        </div>
+        <div class="staff-detail">
+          <span>Salary: </span>
+          <h2 class="title-name">Kshs. 15,000</h2>
+        </div>
+        <div class="staff-detail">
+          <span>Status: </span>
+          <h2 class="title-name">Active</h2>
+        </div>
+      </div>
+    </div>
+    <div class="update-delete-btns">
+      <div class="updateBtn">
+        <button class="actionBtn editBtn">Update Entry</button>
+      </div>
+      <div class="delete-btn">
+        <button class="actionBtn deleteBtn">Delete Entry</button>
+      </div>
+    </div>
   </div>
 </section>
 {% endblock %} {% block script %}
@@ -272,7 +351,7 @@
     <td>${staff.salary.toLocaleString()}</td>
     <td>${staff.status}</td>
     <td>
-      <button class="actionBtn editBtn">View</button>
+      <button class="viewDetail actionBtn editBtn">View</button>
     </td>
   `;
     tbody.appendChild(row);
@@ -291,6 +370,21 @@
 
   closeBtn.addEventListener("click", () => {
     form.style.display = "none";
+    service.style.display = "block";
+  });
+
+  // opening the view staff details section
+  let viewBtn = document.querySelector(".viewDetail");
+  let staffCardDetails = document.querySelector(".viewStaffDetails");
+  let returnBtn = document.querySelector(".returnBtn");
+
+  viewBtn.addEventListener("click", () => {
+    service.style.display = "none";
+    staffCardDetails.style.display = "block";
+  });
+
+  returnBtn.addEventListener("click", () => {
+    staffCardDetails.style.display = "none";
     service.style.display = "block";
   });
 </script>

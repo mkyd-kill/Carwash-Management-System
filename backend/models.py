@@ -15,6 +15,7 @@ class Clients(BaseModel, table=True):
 
 class Staff(BaseModel, table=True):
     name: str = Field(nullable=False)
+    gender: str = Field(nullable=False)
     role: str = Field(nullable=False)
     department: str = Field(nullable=False)
     contact: str = Field(nullable=False)
