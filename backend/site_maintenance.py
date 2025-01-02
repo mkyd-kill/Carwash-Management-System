@@ -4,6 +4,8 @@ from fastapi.requests import Request
 from . import templates, SessionDependancy
 from .schemas import StaffForm
 from .models import Staff
+from typing import List
+from sqlmodel import select
 
 maintenance = APIRouter()
 
@@ -15,9 +17,11 @@ async def branch(request: Request):
 async def settings(request: Request):
     return templates.TemplateResponse("pages/settings.html", {"request": request})
 
-@maintenance.get("/staff", response_class=HTMLResponse)
-async def staff(request: Request):
-    return templates.TemplateResponse("pages/staff.html", {"request": request})
+@maintenance.get("/staff", response_class=HTMLResponse, response_model=List[Staff])
+async def staff(request: Request, session: SessionDependancy):
+    statement = select(Staff)
+    result = session.exec(statement).all()
+    return templates.TemplateResponse("pages/staff.html", {"request": request, "staffs": result})
 
 @maintenance.post("/add-new-staff", response_class=HTMLResponse, status_code=status.HTTP_200_OK)
 async def add_new_staff(request: Request, session: SessionDependancy, form: StaffForm = Depends(StaffForm.as_form)):
