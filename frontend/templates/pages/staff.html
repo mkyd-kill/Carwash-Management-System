@@ -42,126 +42,129 @@
 <section class="addStaff">
   <div class="staffHeader">
     <div class="leftBar">
-      <span class="staffInfo">Add New Staff</span>
+      <h2 class="staffInfo">Add New Staff</h2>
     </div>
     <div class="rightBar">
-      <button class="closeFormBtn addstaffBtn">
-        <span class="addIcon">
-          <i class="fa-solid fa-xmark"></i>
-        </span>
+      <button class="closeFormBtn">
+        <i class="fa-solid fa-xmark"></i>
       </button>
     </div>
   </div>
   <div class="staffForm">
     <form action="{{ url_for('add_new_staff') }}" method="POST">
-      <div class="staffInput">
-        <span>Staff Name</span>
-        <input type="text" name="name" />
+      <div class="formGrid">
+        <div class="staffInput">
+          <label for="name">Staff Name</label>
+          <input type="text" name="name" id="name" placeholder="Enter staff name" />
+        </div>
+        <div class="staffInput">
+          <label for="gender">Staff Gender</label>
+          <select name="gender" id="gender">
+            <option value="">Select gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="staffInput">
+          <label for="role">Staff Role</label>
+          <input type="text" name="role" id="role" placeholder="Enter staff role" />
+        </div>
+        <div class="staffInput">
+          <label for="department">Staff Department</label>
+          <input type="text" name="department" id="department" placeholder="Enter department" />
+        </div>
+        <div class="staffInput">
+          <label for="contact">Staff Contact Number</label>
+          <input type="tel" name="contact" id="contact" placeholder="Enter contact number" />
+        </div>
+        <div class="staffInput">
+          <label for="commission">Staff Commission (KSH)</label>
+          <input type="number" name="commission" id="commission" placeholder="Enter commission amount" />
+        </div>
+        <div class="staffInput">
+          <label for="salary">Staff Salary (KSH)</label>
+          <input type="number" name="salary" id="salary" placeholder="Enter salary" />
+        </div>
+        <div class="staffInput">
+          <label for="status">Staff Status</label>
+          <select name="status" id="status">
+            <option value="">Select status</option>
+            <option value="Active">Active</option>
+            <option value="Inactive">Inactive</option>
+          </select>
+        </div>
       </div>
-      <div class="staffInput">
-        <span>Staff Gender</span>
-        <input type="text" name="gender">
-      </div>
-      <div class="staffInput">
-        <span>Staff Role</span>
-        <input type="text" name="role" />
-      </div>
-      <div class="staffInput">
-        <span>Staff Department</span>
-        <input type="text" name="department" />
-      </div>
-      <div class="staffInput">
-        <span>Staff Contact Number</span>
-        <input type="tel" name="contact" />
-      </div>
-      <div class="staffInput">
-        <span>Staff Commission (KSH)</span>
-        <input type="number" name="commission">
-      </div>
-      <div class="staffInput">
-        <span>Staff Salary (KSH)</span>
-        <input type="number" name="salary">
-      </div>
-      <div class="staffInput">
-        <span>Staff Status</span>
-        <input type="text" name="status" />
-      </div>
-      <button type="submit" class="addstaffBtn">Save Staff</button>
+      <button type="submit" class="saveStaffBtn">Save Staff</button>
     </form>
   </div>
 </section>
 <section class="viewStaffDetails">
   <div class="staff-details-wrapper">
-    <div class="rightBar">
-      <button class="returnBtn addstaffBtn">
-        <span class="addIcon">
-          <i class="fa-solid fa-arrow"></i>
-        </span>
-        Return to Employees
+    <!-- Header with Return Button -->
+    <div class="header-bar">
+      <button class="returnBtn">
+        <i class="fa-solid fa-arrow-left"></i> Return to Employees
       </button>
     </div>
-    <div class="card-details">
+
+    <!-- Main Card Section -->
+    <div class="card-container">
       <div class="identity-details">
+        <!-- Profile Picture -->
         <div class="avatar">
           <img src="static/img/avatar.jpg" alt="avatar">
         </div>
-        <div class="minor-details">
-          <div class="staff-id">
-            <span>Staff ID</span>
-            <h3>EMP001</h3>
-          </div>
-          <div class="staff-date-hired">
-            <span>Date Hired</span>
-            <h4 class="date">2024-11-01 11:30:43</h4>
+        <!-- Basic Information -->
+        <div class="basic-info">
+          <h2 class="staff-name">John Mwangi</h2>
+          <p class="staff-role">Cleaner - Washing Department</p>
+          <div class="minor-details">
+            <div class="detail-item">
+              <span>Staff ID:</span>
+              <strong>EMP001</strong>
+            </div>
+            <div class="detail-item">
+              <span>Date Hired:</span>
+              <strong>2024-11-01 11:30:43</strong>
+            </div>
           </div>
         </div>
       </div>
+
+      <!-- Detailed Information -->
       <div class="staff-details">
         <div class="staff-detail">
-          <span>Name: </span>
-          <h2 class="title-name">John Mwangi</h2>
+          <span>National ID:</span>
+          <strong>21436587</strong>
         </div>
         <div class="staff-detail">
-          <span>Gender: </span>
-          <h2 class="title-name">Male</h2>
+          <span>Gender:</span>
+          <strong>Male</strong>
         </div>
         <div class="staff-detail">
-          <span>National ID: </span>
-          <h2 class="title-name">21436587</h2>
+          <span>Contact Number:</span>
+          <strong>0712345678</strong>
         </div>
         <div class="staff-detail">
-          <span>Role: </span>
-          <h2 class="title-name">Cleaner</h2>
+          <span>Commission:</span>
+          <strong>Kshs. 200</strong>
         </div>
         <div class="staff-detail">
-          <span>Department: </span>
-          <h2 class="title-name">Washing</h2>
+          <span>Salary:</span>
+          <strong>Kshs. 15,000</strong>
         </div>
         <div class="staff-detail">
-          <span>Contact Number: </span>
-          <h2 class="title-name">0712345678</h2>
-        </div>
-        <div class="staff-detail">
-          <span>Commission: </span>
-          <h2 class="title-name">Kshs. 200</h2>
-        </div>
-        <div class="staff-detail">
-          <span>Salary: </span>
-          <h2 class="title-name">Kshs. 15,000</h2>
-        </div>
-        <div class="staff-detail">
-          <span>Status: </span>
-          <h2 class="title-name">Active</h2>
+          <span>Status:</span>
+          <strong class="status active">Active</strong>
         </div>
       </div>
     </div>
-    <div class="update-delete-btns">
-      <div class="updateBtn">
-        <button class="actionBtn editBtn">Update Entry</button>
-      </div>
-      <div class="delete-btn">
-        <button class="actionBtn deleteBtn">Delete Entry</button>
-      </div>
+
+    <!-- Action Buttons -->
+    <div class="action-buttons">
+      <button class="actionBtn updateBtn">Update Entry</button>
+      <button class="actionBtn deleteBtn">Delete Entry</button>
     </div>
   </div>
 </section>
