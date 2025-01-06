@@ -25,17 +25,7 @@ async def staff(request: Request, session: SessionDependancy):
 
 @maintenance.post("/add-new-staff", response_class=HTMLResponse, status_code=status.HTTP_200_OK)
 async def add_new_staff(request: Request, session: SessionDependancy, form: StaffForm = Depends(StaffForm.as_form)):
-    data = {
-        "name": form.name,
-        "gender": form.gender,
-        "role": form.role,
-        "department": form.department,
-        "contact": form.contact,
-        "commission": form.commission,
-        "salary": form.salary,
-        "status": form.status
-    }
-    created_staff= Staff(**data)
+    created_staff= Staff(**form.dict())
     session.add(created_staff)
     session.commit()
     return templates.TemplateResponse("pages/staff.html", {"request": request, "message": "Staff Added Successfully"})

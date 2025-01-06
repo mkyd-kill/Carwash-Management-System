@@ -13,7 +13,8 @@ class AdminModel(BaseModel, table=True):
 class Clients(BaseModel, table=True):
     vehicle: str = Field(nullable=False)
 
-class Staff(BaseModel, table=True):
+class Staff(SQLModel, table=True):
+    id: Optional[int] = Field(default=None, primary_key=True)
     name: str = Field(nullable=False)
     gender: str = Field(nullable=False)
     role: str = Field(nullable=False)

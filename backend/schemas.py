@@ -1,16 +1,17 @@
 from pydantic import BaseModel
 from fastapi import Form
 
-class UserAdmin(BaseModel):
+class UserAdminForm(BaseModel):
     username: str
     password: str
 
     @classmethod
-    def as_form(cls, username: str = Form(...), password: str = Form(...)):
-        return cls(
-            username=username,
-            password=password
-        )
+    def as_form(
+        cls,
+        username: str = Form(...),
+        password: str = Form(...)
+    ) -> "UserAdminForm":
+        return cls(**locals())
 
 class ServiceForm(BaseModel):
     name: str
@@ -29,15 +30,8 @@ class ServiceForm(BaseModel):
         discount: int = Form(...),
         status: str = Form(...),
         availability: str = Form(...)
-    ):
-        return cls(
-            name=name,
-            cost=cost,
-            commission=commission,
-            discount=discount,
-            status=status,
-            availability=availability
-        )
+    ) -> "ServiceForm":
+        return cls(**locals())
     
 class StaffForm(BaseModel):
     name: str
@@ -60,14 +54,5 @@ class StaffForm(BaseModel):
         commission: int = Form(...),
         salary: int = Form(...),
         status: str = Form(...)
-    ):
-        return cls(
-            name=name,
-            gender=gender,
-            role=role,
-            department=department,
-            contact=contact,
-            commission=commission,
-            salary=salary,
-            status=status
-        )
+    ) -> "StaffForm":
+        return cls(**locals())
