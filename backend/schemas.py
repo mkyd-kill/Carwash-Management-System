@@ -35,6 +35,8 @@ class ServiceForm(BaseModel):
     
 class StaffForm(BaseModel):
     name: str
+    staff_id: int
+    email: str
     gender: str
     role: str
     department: str
@@ -47,6 +49,8 @@ class StaffForm(BaseModel):
     def as_form(
         cls,
         name: str = Form(...),
+        staff_id: int = Form(...),
+        email: str = Form(...),
         gender: str = Form(...),
         role: str = Form(...),
         department: str = Form(...),
