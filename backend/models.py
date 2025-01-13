@@ -3,7 +3,7 @@ from sqlmodel import SQLModel, Field, Relationship
 from datetime import datetime
 
 class BaseModel(SQLModel):
-    id: Optional[int] = Field(primary_key=True)
+    id: Optional[int] = Field(default=None, primary_key=True)
     date_created: Optional[datetime] = Field(default_factory=lambda: datetime.now())
 
 class AdminModel(BaseModel, table=True):
@@ -13,8 +13,7 @@ class AdminModel(BaseModel, table=True):
 class Clients(BaseModel, table=True):
     vehicle: str = Field(nullable=False)
 
-class Staff(SQLModel, table=True):
-    id: Optional[int] = Field(default=None, primary_key=True)
+class Staff(BaseModel, table=True):
     name: str = Field(nullable=False)
     staff_id: Optional[int] = Field(nullable=False)
     email: str = Field(nullable=False)

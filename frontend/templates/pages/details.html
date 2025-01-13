@@ -1,0 +1,77 @@
+{% extends "pages/root.html" %} {% block head %}
+<title>Staff</title>
+<link rel="stylesheet" href="static/pages/staff.css" />
+{% endblock %} {% block content %}
+<section class="viewStaffDetails">
+  <div class="staff-details-wrapper">
+    <!-- Header with Return Button -->
+    <div class="header-bar">
+      <button class="returnBtn">
+        <i class="fa-solid fa-arrow-left"></i> Return to Employees
+      </button>
+    </div>
+
+    <!-- Main Card Section -->
+    <div class="card-container">
+      <div class="identity-details">
+        <!-- Profile Picture -->
+        <div class="avatar">
+          <img src="static/img/avatar.jpg" alt="avatar" />
+        </div>
+        <!-- Basic Information -->
+        <div class="basic-info">
+          <h2 class="staff-name">{{ staff.name }}</h2>
+          <p class="staff-role">{{ staff.role }} - {{ staff.department }}</p>
+          <div class="minor-details">
+            <div class="detail-item">
+              <span>Staff ID:</span>
+              <strong>{{ staff.id }}</strong>
+            </div>
+            <div class="detail-item">
+              <span>Date Hired:</span>
+              <strong>{{ staff.date_created }}</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Detailed Information -->
+      <div class="staff-details">
+        <div class="staff-detail">
+          <span>National ID:</span>
+          <strong>{{ staff.staff_id }}</strong>
+        </div>
+        <div class="staff-detail">
+          <span>Gender:</span>
+          <strong>{{ staff.gender }}</strong>
+        </div>
+        <div class="staff-detail">
+          <span>Contact Number:</span>
+          <strong>{{ staff.contact }}</strong>
+        </div>
+        <div class="staff-detail">
+          <span>Commission:</span>
+          <strong>{{ staff.commission }}</strong>
+        </div>
+        <div class="staff-detail">
+          <span>Salary:</span>
+          <strong>{{ staff.salary }}</strong>
+        </div>
+        <div class="staff-detail">
+          <span>Status:</span>
+          <strong class="status active">{{ staff.status }}</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="action-buttons">
+      <button class="actionBtn updateBtn">Update Entry</button>
+      <button class="actionBtn deleteBtn">Delete Entry</button>
+    </div>
+  </div>
+</section>
+{% endblock %} {% block script %}
+<script>
+</script>
+{% endblock %}

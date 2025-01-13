@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, status
+from fastapi import APIRouter, Depends, status, HTTPException
 from fastapi.responses import HTMLResponse
 from fastapi.requests import Request
 from . import templates, SessionDependancy
@@ -28,4 +28,12 @@ async def add_new_staff(request: Request, session: SessionDependancy, form: Staf
     created_staff= Staff(**form.dict())
     session.add(created_staff)
     session.commit()
+    session.refresh(created_staff)
     return templates.TemplateResponse("pages/staff.html", {"request": request, "message": "Staff Added Successfully"})
+
+@maintenance.get("/details/{staff_id}")
+async def staff_details(request: Request, staff_id: int, session: SessionDependancy):
+    staff = session.get(Staff, staff_id)
+    if not staff:
+        raise HTTPException(status_code=404, detail="Staff Not Found")
+    return templates.TemplateResponse("pages/details.html", {"request": request, "staff": staff})

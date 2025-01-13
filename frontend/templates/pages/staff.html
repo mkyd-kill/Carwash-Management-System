@@ -34,7 +34,26 @@
             <th></th>
           </tr>
         </thead>
-        <tbody class="staffTableBody"></tbody>
+        <tbody class="staffTableBody">
+          {% for staff in staffs %}
+          <tr>
+            <td>{{ staff.id }}</td>
+            <td>{{ staff.staff_id }}</td>
+            <td>{{ staff.name }}</td>
+            <td>{{ staff.role }}</td>
+            <td>{{ staff.department }}</td>
+            <td>{{ staff.contact }}</td>
+            <td>{{ "{:,.0f}".format(staff.commission) }}</td>
+            <td>{{ "{:,.0f}".format(staff.salary) }}</td>
+            <td>{{ staff.status }}</td>
+            <td>
+              <button class="viewDetail actionBtn editBtn">
+                <a href="details/{{ staff.id }}">View</a>
+              </button>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
       </table>
     </div>
   </div>
@@ -107,267 +126,8 @@
     </form>
   </div>
 </section>
-<section class="viewStaffDetails">
-  <div class="staff-details-wrapper">
-    <!-- Header with Return Button -->
-    <div class="header-bar">
-      <button class="returnBtn">
-        <i class="fa-solid fa-arrow-left"></i> Return to Employees
-      </button>
-    </div>
-
-    <!-- Main Card Section -->
-    <div class="card-container">
-      <div class="identity-details">
-        <!-- Profile Picture -->
-        <div class="avatar">
-          <img src="static/img/avatar.jpg" alt="avatar">
-        </div>
-        <!-- Basic Information -->
-        <div class="basic-info">
-          <h2 class="staff-name">John Mwangi</h2>
-          <p class="staff-role">Cleaner - Washing Department</p>
-          <div class="minor-details">
-            <div class="detail-item">
-              <span>Staff ID:</span>
-              <strong>EMP001</strong>
-            </div>
-            <div class="detail-item">
-              <span>Date Hired:</span>
-              <strong>2024-11-01 11:30:43</strong>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Detailed Information -->
-      <div class="staff-details">
-        <div class="staff-detail">
-          <span>National ID:</span>
-          <strong>21436587</strong>
-        </div>
-        <div class="staff-detail">
-          <span>Gender:</span>
-          <strong>Male</strong>
-        </div>
-        <div class="staff-detail">
-          <span>Contact Number:</span>
-          <strong>0712345678</strong>
-        </div>
-        <div class="staff-detail">
-          <span>Commission:</span>
-          <strong>Kshs. 200</strong>
-        </div>
-        <div class="staff-detail">
-          <span>Salary:</span>
-          <strong>Kshs. 15,000</strong>
-        </div>
-        <div class="staff-detail">
-          <span>Status:</span>
-          <strong class="status active">Active</strong>
-        </div>
-      </div>
-    </div>
-
-    <!-- Action Buttons -->
-    <div class="action-buttons">
-      <button class="actionBtn updateBtn">Update Entry</button>
-      <button class="actionBtn deleteBtn">Delete Entry</button>
-    </div>
-  </div>
-</section>
 {% endblock %} {% block script %}
 <script>
-  const staffData = [
-    {
-      id: 1,
-      staffID: "EMP001",
-      name: "John Mwangi",
-      role: "Cleaner",
-      department: "Washing",
-      contact: "0712345678",
-      commission: 200,
-      salary: 15000,
-      status: "Active",
-    },
-    {
-      id: 2,
-      staffID: "EMP002",
-      name: "Jane Wanjiru",
-      role: "Cashier",
-      department: "Administration",
-      contact: "0723456789",
-      commission: 0,
-      salary: 25000,
-      status: "Active",
-    },
-    {
-      id: 3,
-      staffID: "EMP003",
-      name: "Peter Otieno",
-      role: "Supervisor",
-      department: "Management",
-      contact: "0734567890",
-      commission: 500,
-      salary: 40000,
-      status: "Active",
-    },
-    {
-      id: 4,
-      staffID: "EMP004",
-      name: "Grace Muthoni",
-      role: "Receptionist",
-      department: "Customer Service",
-      contact: "0745678901",
-      commission: 0,
-      salary: 20000,
-      status: "Active",
-    },
-    {
-      id: 5,
-      staffID: "EMP005",
-      name: "Samuel Njuguna",
-      role: "Technician",
-      department: "Maintenance",
-      contact: "0756789012",
-      commission: 300,
-      salary: 30000,
-      status: "Active",
-    },
-    {
-      id: 6,
-      staffID: "EMP006",
-      name: "Diana Njeri",
-      role: "Cleaner",
-      department: "Washing",
-      contact: "0767890123",
-      commission: 250,
-      salary: 15000,
-      status: "On Leave",
-    },
-    {
-      id: 7,
-      staffID: "EMP007",
-      name: "Brian Ochieng",
-      role: "Accountant",
-      department: "Finance",
-      contact: "0778901234",
-      commission: 0,
-      salary: 45000,
-      status: "Active",
-    },
-    {
-      id: 8,
-      staffID: "EMP008",
-      name: "Lucy Wambui",
-      role: "Car Detailer",
-      department: "Washing",
-      contact: "0789012345",
-      commission: 300,
-      salary: 18000,
-      status: "Active",
-    },
-    {
-      id: 9,
-      staffID: "EMP009",
-      name: "George Omondi",
-      role: "Security Guard",
-      department: "Security",
-      contact: "0790123456",
-      commission: 0,
-      salary: 12000,
-      status: "Active",
-    },
-    {
-      id: 10,
-      staffID: "EMP010",
-      name: "Pauline Akinyi",
-      role: "Cleaner",
-      department: "Washing",
-      contact: "0701234567",
-      commission: 200,
-      salary: 15000,
-      status: "Active",
-    },
-    {
-      id: 11,
-      staffID: "EMP011",
-      name: "Francis Mwenda",
-      role: "Mechanic",
-      department: "Maintenance",
-      contact: "0712345670",
-      commission: 400,
-      salary: 35000,
-      status: "Active",
-    },
-    {
-      id: 12,
-      staffID: "EMP012",
-      name: "Sarah Kimani",
-      role: "Car Detailer",
-      department: "Washing",
-      contact: "0723456781",
-      commission: 300,
-      salary: 18000,
-      status: "Active",
-    },
-    {
-      id: 13,
-      staffID: "EMP013",
-      name: "Kevin Mutua",
-      role: "Cleaner",
-      department: "Washing",
-      contact: "0734567892",
-      commission: 200,
-      salary: 15000,
-      status: "On Leave",
-    },
-    {
-      id: 14,
-      staffID: "EMP014",
-      name: "Catherine Wanjala",
-      role: "Supervisor",
-      department: "Washing",
-      contact: "0745678903",
-      commission: 500,
-      salary: 38000,
-      status: "Active",
-    },
-    {
-      id: 15,
-      staffID: "EMP015",
-      name: "Vincent Ndungu",
-      role: "Cleaner",
-      department: "Washing",
-      contact: "0756789014",
-      commission: 250,
-      salary: 15000,
-      status: "Active",
-    },
-  ];
-
-  const tbody = document.querySelector(".staffTableBody");
-
-  staffData.forEach((staff) => {
-    const row = document.createElement("tr");
-
-    row.innerHTML = `
-    <td>${staff.id}</td>
-    <td>${staff.staffID}</td>
-    <td>${staff.name}</td>
-    <td>${staff.role}</td>
-    <td>${staff.department}</td>
-    <td>${staff.contact}</td>
-    <td>${staff.commission.toLocaleString()}</td>
-    <td>${staff.salary.toLocaleString()}</td>
-    <td>${staff.status}</td>
-    <td>
-      <button class="viewDetail actionBtn editBtn">View</button>
-    </td>
-  `;
-    tbody.appendChild(row);
-  });
-
   // open and close the form
   let service = document.querySelector(".staffContainer");
   let form = document.querySelector(".addStaff");
@@ -381,21 +141,6 @@
 
   closeBtn.addEventListener("click", () => {
     form.style.display = "none";
-    service.style.display = "block";
-  });
-
-  // opening the view staff details section
-  let viewBtn = document.querySelector(".viewDetail");
-  let staffCardDetails = document.querySelector(".viewStaffDetails");
-  let returnBtn = document.querySelector(".returnBtn");
-
-  viewBtn.addEventListener("click", () => {
-    service.style.display = "none";
-    staffCardDetails.style.display = "block";
-  });
-
-  returnBtn.addEventListener("click", () => {
-    staffCardDetails.style.display = "none";
     service.style.display = "block";
   });
 </script>
