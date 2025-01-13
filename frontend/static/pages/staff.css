@@ -330,11 +330,11 @@
   color: #fff;
 }
 
-.status.active {
+.active {
   background-color: #28a745;
 }
 
-.status.inactive {
+.inactive {
   background-color: #dc3545;
 }
 

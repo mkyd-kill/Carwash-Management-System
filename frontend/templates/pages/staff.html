@@ -45,7 +45,13 @@
             <td>{{ staff.contact }}</td>
             <td>{{ "{:,.0f}".format(staff.commission) }}</td>
             <td>{{ "{:,.0f}".format(staff.salary) }}</td>
-            <td>{{ staff.status }}</td>
+            <td>
+              {% if staff.status == 'Active' %}
+              <span class="status active">{{ staff.status }}</span>
+              {% else %}
+              <span class="status inactive">{{ staff.status }}</span>
+              {% endif %}
+            </td>
             <td>
               <button class="viewDetail actionBtn editBtn">
                 <a href="details/{{ staff.id }}">View</a>
