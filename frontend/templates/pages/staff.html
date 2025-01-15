@@ -54,7 +54,7 @@
             </td>
             <td>
               <button class="viewDetail actionBtn editBtn">
-                <a href="details/{{ staff.id }}">View</a>
+                <a href="{{ url_for('staff_details', staff_id=staff.id) }}">View</a>
               </button>
             </td>
           </tr>

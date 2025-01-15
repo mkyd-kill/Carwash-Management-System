@@ -1,5 +1,5 @@
 {% extends "pages/root.html" %} {% block head %}
-<title>Staff</title>
+<title>Staff Details</title>
 <link rel="stylesheet" href="static/pages/staff.css" />
 {% endblock %} {% block content %}
 <section class="viewStaffDetails">
@@ -7,7 +7,9 @@
     <!-- Header with Return Button -->
     <div class="header-bar">
       <button class="returnBtn">
-        <i class="fa-solid fa-arrow-left"></i> Return to Employees
+        <a href="{{ url_for('staff') }}">
+          <i class="fa-solid fa-arrow-left"></i> Return to Employees
+        </a>
       </button>
     </div>
 
