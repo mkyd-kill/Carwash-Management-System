@@ -37,3 +37,11 @@ async def staff_details(request: Request, staff_id: int, session: SessionDependa
     if not staff:
         raise HTTPException(status_code=404, detail="Staff Not Found")
     return templates.TemplateResponse("pages/details.html", {"request": request, "staff": staff})
+
+@maintenance.get("/delete-staff/{staff_id}", response_class=HTMLResponse)
+async def delete_staff(request: Request, staff_id: int, session: SessionDependancy):
+    pass
+
+@maintenance.put("/update-staff/{staff_id}")
+async def update_staff(request: Request, staff_id: int, session: SessionDependancy):
+    pass

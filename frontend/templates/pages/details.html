@@ -66,8 +66,12 @@
 
     <!-- Action Buttons -->
     <div class="action-buttons">
-      <button class="actionBtn updateBtn">Update Entry</button>
-      <button class="actionBtn deleteBtn">Delete Entry</button>
+      <button class="actionBtn updateBtn">
+        <a href="/update-staff/{{ staff.id }}">Update Entry</a>
+      </button>
+      <button class="actionBtn deleteBtn">
+        <a href="/delete-staff/{{ staff.id }}">Delete Entry</a>
+      </button>
     </div>
   </div>
 </section>

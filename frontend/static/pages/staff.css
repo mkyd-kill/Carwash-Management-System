@@ -341,3 +341,12 @@
 .action-buttons {
   gap: 2rem;
 }
+
+a {
+  list-style: none;
+  text-decoration: none;
+}
+
+.viewDetail a {
+  color: white;
+}
