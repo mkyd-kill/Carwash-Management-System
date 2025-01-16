@@ -12,7 +12,10 @@ async def get_login_form(request: Request):
 
 @auth.post("/login", response_class=HTMLResponse)
 async def post_login_form(request: Request, form: UserAdminForm = Depends(UserAdminForm.as_form)):
-    print(form)
+    return templates.TemplateResponse("login.html", {"request": request})
+
+@auth.post("/register", response_class=HTMLResponse)
+async def post_register_form(request: Request, form: UserAdminForm = Depends(UserAdminForm.as_form)):
     return templates.TemplateResponse("login.html", {"request": request})
 
 @auth.get("/dashboard", response_class=HTMLResponse)

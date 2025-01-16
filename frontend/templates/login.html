@@ -18,18 +18,41 @@
         <div class="login-form-details">
           <div class="welcome-intro">
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae,
-              veritatis?
+              Number One Carwash Monitoring Application for your Customers, Staff and Finances
             </p>
           </div>
           <div class="login-form">
             <form action="{{ url_for('post_login_form') }}" method="POST" autocapitalize="off" autocomplete="off">
               <input type="text" placeholder="username" name="username" required/>
               <input type="password" placeholder="password" name="password" required/>
-              <button type="submit">Login</button>
+              <button type="submit" class="submit-form">Proceed to Dashboard</button>
+            </form>
+          </div>
+          <div class="open-register-form">
+            <button class="open-form">Click Here to Register New Account</button>
+          </div>
+          <div class="register-form">
+            <form action="{{ url_for('post_register_form') }}" method="POST" autocapitalize="off" autocomplete="off">
+              <input type="text" placeholder="username" name="username" required/>
+              <input type="password" placeholder="password" name="password" required/>
+              <input type="password" placeholder="confirm password" name="password2" required/>
+              <button type="submit" class="submit-form">Register Account</button>
             </form>
           </div>
         </div>
       </div>
+
+      <script>
+        let login_form = document.querySelector(".login-form");
+        let register_form = document.querySelector(".register-form");
+        let open_div = document.querySelector(".open-register-form");
+        let open_btn = document.querySelector(".open-form");
+
+        open_btn.addEventListener("click", () => {
+          login_form.style.display = "none";
+          register_form.style.display = "block";
+          open_div.style.display = "none";
+        })
+      </script>
 </body>
 </html>

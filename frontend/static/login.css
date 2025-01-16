@@ -48,7 +48,7 @@ input::placeholder {
   color: #555;
 }
 
-button {
+.submit-form {
   padding: 10px;
   border-radius: 10px;
   margin-top: 15px;
@@ -59,4 +59,22 @@ button {
   background-color: #4caf50;
   width: 100%;
   font-size: 16px;
+}
+
+.register-form {
+  display: none;
+}
+
+.open-register-form {
+  padding: 10px;
+}
+
+.open-form {
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  color: rgb(20, 19, 19);
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 12px;
 }
