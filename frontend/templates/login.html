@@ -35,7 +35,6 @@
             <form action="{{ url_for('post_register_form') }}" method="POST" autocapitalize="off" autocomplete="off">
               <input type="text" placeholder="username" name="username" required/>
               <input type="password" placeholder="password" name="password" required/>
-              <input type="password" placeholder="confirm password" name="password2" required/>
               <button type="submit" class="submit-form">Register Account</button>
             </form>
           </div>
@@ -52,7 +51,7 @@
           login_form.style.display = "none";
           register_form.style.display = "block";
           open_div.style.display = "none";
-        })
+        });
       </script>
 </body>
 </html>
