@@ -6,7 +6,7 @@ class BaseModel(SQLModel):
     id: Optional[int] = Field(default=None, primary_key=True)
     date_created: Optional[datetime] = Field(default_factory=lambda: datetime.now())
 
-class AdminModel(BaseModel, table=True):
+class Admin(BaseModel, table=True):
     username: str = Field(nullable=False)
     password: str = Field(nullable=False)
 
