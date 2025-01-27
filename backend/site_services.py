@@ -1,7 +1,7 @@
 from fastapi import APIRouter, status, Depends
 from typing import List
 from sqlmodel import select
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.requests import Request
 from . import templates, SessionDependancy
 from .models import Service
@@ -23,10 +23,11 @@ async def services(request: Request, session: SessionDependancy):
     services = session.exec(statement).all()
     return templates.TemplateResponse("pages/services.html", {"request": request, "services": services})
 
-@service.post("/add-new-service", response_class=HTMLResponse, response_model=Service, status_code=status.HTTP_200_OK)
+@service.post("/add-new-service", response_class=HTMLResponse, status_code=status.HTTP_201_CREATED)
 async def add_new_service(request: Request, session: SessionDependancy, form: ServiceForm = Depends(ServiceForm.as_form)):
     created_item = Service(**form.dict())
     session.add(created_item)
     session.commit()
     session.refresh(created_item)
-    return templates.TemplateResponse("pages/services.html", {"request": request})
+    redirect_url = request.url_for('services')
+    return RedirectResponse(redirect_url, status_code=status.HTTP_201_CREATED)

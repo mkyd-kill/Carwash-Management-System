@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Depends, status, HTTPException
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.requests import Request
 from . import templates, SessionDependancy
 from .schemas import StaffForm
@@ -23,13 +23,14 @@ async def staff(request: Request, session: SessionDependancy):
     result = session.exec(statement).all()
     return templates.TemplateResponse("pages/staff.html", {"request": request, "staffs": result})
 
-@maintenance.post("/add-new-staff", response_class=HTMLResponse, status_code=status.HTTP_200_OK)
+@maintenance.post("/add-new-staff", response_class=HTMLResponse, status_code=status.HTTP_201_CREATED)
 async def add_new_staff(request: Request, session: SessionDependancy, form: StaffForm = Depends(StaffForm.as_form)):
     created_staff= Staff(**form.dict())
     session.add(created_staff)
     session.commit()
     session.refresh(created_staff)
-    return templates.TemplateResponse("pages/staff.html", {"request": request, "message": "Staff Added Successfully"})
+    redirect_url = request.url_for('staff')
+    return RedirectResponse(redirect_url, status_code=status.HTTP_201_CREATED)
 
 @maintenance.get("/details/{staff_id}")
 async def staff_details(request: Request, staff_id: int, session: SessionDependancy):
