@@ -1,4 +1,89 @@
 {% extends "pages/root.html" %} {% block head %}
 <title>Branch</title>
 <link rel="stylesheet" href="static/pages/branch.css" />
-{% endblock %} {% block content %} {% endblock %}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+{% endblock %} {% block content %}
+<div class="branch-page">
+  <header class="branch-header">
+    <h1>Carwash Branch Management</h1>
+    <p>Manage and view branches of your HQ.</p>
+  </header>
+
+  <main class="branch-content">
+    <!-- Branch Details Section -->
+    <section class="branch-details">
+      <h2>Branch Information</h2>
+      <div id="branchList">
+        <div class="branch-item">
+          <strong>HQ (Current Login):</strong> Nairobi, Kenya
+        </div>
+        <!-- Branch items dynamically populated here -->
+      </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+      <h2>Branch Locations</h2>
+      <div id="map" class="map"></div>
+    </section>
+  </main>
+</div>
+{% endblock %} {% block script %}
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // Simulated branch data
+    const branches = [
+      {
+        name: "Branch 1",
+        location: "Mombasa, Kenya",
+        lat: -4.0435,
+        lng: 39.6682,
+      },
+      {
+        name: "Branch 2",
+        location: "Kisumu, Kenya",
+        lat: -0.0917,
+        lng: 34.7679,
+      },
+      {
+        name: "Branch 3",
+        location: "Eldoret, Kenya",
+        lat: 0.5167,
+        lng: 35.2833,
+      },
+      { name: "Branch 4", location: "Nakuru, Kenya", lat: -0.3031, lng: 36.08 },
+    ];
+
+    // Populate branch list
+    const branchList = document.getElementById("branchList");
+    branches.forEach((branch) => {
+      const branchItem = document.createElement("div");
+      branchItem.className = "branch-item";
+      branchItem.innerHTML = `<strong>${branch.name}:</strong> ${branch.location}`;
+      branchList.appendChild(branchItem);
+    });
+
+    // Initialize Leaflet map
+    const map = L.map("map").setView([-1.286389, 36.817223], 7); // Nairobi as the center
+
+    // Add OpenStreetMap tile layer
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 19,
+      attribution: "© OpenStreetMap contributors",
+    }).addTo(map);
+
+    // Add HQ marker
+    const hqMarker = L.marker([-1.286389, 36.817223]) // Nairobi coordinates
+      .addTo(map)
+      .bindPopup("<b>HQ</b><br>Nairobi, Kenya");
+
+    // Add branch markers
+    branches.forEach((branch) => {
+      const marker = L.marker([branch.lat, branch.lng])
+        .addTo(map)
+        .bindPopup(`<b>${branch.name}</b><br>${branch.location}`);
+    });
+  });
+</script>
+{% endblock %}
