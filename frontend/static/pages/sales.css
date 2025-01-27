@@ -1,0 +1,86 @@
+.sales-page {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.sales-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.sales-header h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.sales-header p {
+  margin: 0;
+  font-size: 1rem;
+  color: #666;
+}
+
+.sales-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sales-section,
+.receipt-section {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+
+.sales-section h2,
+.receipt-section h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.hint {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.submit-btn {
+  background-color: #28a745;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background-color: #218838;
+}
+
+.receipt-container {
+  background-color: #f9f9f9;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}

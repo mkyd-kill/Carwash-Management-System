@@ -1,4 +1,154 @@
 {% extends "pages/root.html" %} {% block head %}
-<title>Sales</title>
+<title>Sales - CarWash POS</title>
+<link rel="stylesheet" href="static/pages/sales.css" />
 {% endblock %} {% block content %}
+<div class="sales-page">
+  <header class="sales-header">
+    <h1>Carwash POS</h1>
+    <p>Manage your sales and generate receipts for carwash services.</p>
+  </header>
+
+  <main class="sales-content">
+    <!-- Sales Form -->
+    <section class="sales-section">
+      <h2>Point of Sale</h2>
+      <form id="salesForm">
+        <!-- Customer Details -->
+        <div class="form-group">
+          <label for="carRegistration">Car Registration Number</label>
+          <input
+            type="text"
+            id="carRegistration"
+            name="carRegistration"
+            placeholder="Enter car registration number"
+            required
+          />
+        </div>
+
+        <!-- Service Selection -->
+        <div class="form-group">
+          <label for="serviceOffered">Service Offered</label>
+          <select id="serviceOffered" name="serviceOffered" required>
+            <option value="">Select a Service</option>
+            <option value="Basic Wash">Basic Wash</option>
+            <option value="Interior Cleaning">Interior Cleaning</option>
+            <option value="Full Detail">Full Detail</option>
+            <option value="Wax and Polish">Wax and Polish</option>
+            <option value="Engine Wash">Engine Wash</option>
+          </select>
+        </div>
+
+        <!-- Service Cost -->
+        <div class="form-group">
+          <label for="serviceCost">Service Cost</label>
+          <input
+            type="number"
+            id="serviceCost"
+            name="serviceCost"
+            placeholder="Enter service cost"
+            required
+          />
+        </div>
+
+        <!-- Discount -->
+        <div class="form-group">
+          <label for="serviceDiscount">Discount (%)</label>
+          <input
+            type="number"
+            id="serviceDiscount"
+            name="serviceDiscount"
+            placeholder="Enter discount percentage"
+            required
+          />
+        </div>
+
+        <!-- Payment Mode -->
+        <div class="form-group">
+          <label for="paymentMode">Mode of Payment</label>
+          <select id="paymentMode" name="paymentMode" required>
+            <option value="">Select Payment Mode</option>
+            <option value="Cash">Cash</option>
+            <option value="Mpesa">Mpesa</option>
+            <option value="Airtel Money">Airtel Money</option>
+          </select>
+        </div>
+
+        <!-- Staff Selection -->
+        <div class="form-group">
+          <label for="staffAssigned">Staff Assigned</label>
+          <select id="staffAssigned" name="staffAssigned" multiple required>
+            <!-- Example staff (replace with dynamic data later) -->
+            <option value="John Mwangi">John Mwangi</option>
+            <option value="Grace Muthoni">Grace Muthoni</option>
+            <option value="Peter Otieno">Peter Otieno</option>
+            <option value="Diana Njeri">Diana Njeri</option>
+          </select>
+          <p class="hint">Hold CTRL or CMD to select multiple staff members.</p>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="submit-btn">Generate Receipt</button>
+      </form>
+    </section>
+
+    <!-- Receipt Display -->
+    <section class="receipt-section">
+      <h2>Receipt</h2>
+      <div id="receiptContainer" class="receipt-container">
+        <p>No receipt generated yet.</p>
+      </div>
+    </section>
+  </main>
+</div>
+{% endblock %} {% block script %}
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const salesForm = document.getElementById("salesForm");
+    const receiptContainer = document.getElementById("receiptContainer");
+
+    // Handle form submission
+    salesForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      // Get form values
+      const carRegistration = document
+        .getElementById("carRegistration")
+        .value.trim();
+      const serviceOffered = document.getElementById("serviceOffered").value;
+      const serviceCost = parseFloat(
+        document.getElementById("serviceCost").value
+      );
+      const serviceDiscount = parseFloat(
+        document.getElementById("serviceDiscount").value
+      );
+      const paymentMode = document.getElementById("paymentMode").value;
+      const staffAssigned = Array.from(
+        document.getElementById("staffAssigned").selectedOptions
+      ).map((option) => option.value);
+
+      // Calculate discounted price
+      const discountedCost =
+        serviceCost - serviceCost * (serviceDiscount / 100);
+
+      // Generate receipt
+      const receiptHTML = `
+      <h3>Receipt</h3>
+      <p><strong>Car Registration:</strong> ${carRegistration}</p>
+      <p><strong>Service Offered:</strong> ${serviceOffered}</p>
+      <p><strong>Original Cost:</strong> $${serviceCost.toFixed(2)}</p>
+      <p><strong>Discount:</strong> ${serviceDiscount}%</p>
+      <p><strong>Discounted Cost:</strong> $${discountedCost.toFixed(2)}</p>
+      <p><strong>Payment Mode:</strong> ${paymentMode}</p>
+      <p><strong>Staff Assigned:</strong> ${staffAssigned.join(", ")}</p>
+      <p><strong>Total Paid:</strong> $${discountedCost.toFixed(2)}</p>
+    `;
+
+      // Display receipt
+      receiptContainer.innerHTML = receiptHTML;
+
+      // Reset form
+      salesForm.reset();
+    });
+  });
+</script>
 {% endblock %}
