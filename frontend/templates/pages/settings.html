@@ -1,3 +1,140 @@
 {% extends "pages/root.html" %} {% block head %}
-<title>Settings</title>
-{% endblock %} {% block content %} {% endblock %}
+<title>Settings - CarWash POS</title>
+<link rel="stylesheet" href="static/pages/settings.css" />
+{% endblock %} {% block content %}
+<div class="settings-page">
+  <header class="settings-header">
+    <h1>Settings</h1>
+    <p>Manage your carwash system's configuration.</p>
+  </header>
+
+  <main class="settings-content">
+    <!-- Section for Adding Departments -->
+    <section class="settings-section">
+      <h2>Add Departments</h2>
+      <form id="departmentForm">
+        <div class="form-group">
+          <label for="departmentName">Department Name</label>
+          <input
+            type="text"
+            id="departmentName"
+            name="departmentName"
+            placeholder="Enter department name"
+            required
+          />
+        </div>
+        <button type="submit" class="submit-btn">Add Department</button>
+      </form>
+      <div class="list-container">
+        <h3>Existing Departments</h3>
+        <ul id="departmentList" class="list"></ul>
+      </div>
+    </section>
+
+    <!-- Section for Adding Roles -->
+    <section class="settings-section">
+      <h2>Add Roles</h2>
+      <form id="roleForm">
+        <div class="form-group">
+          <label for="roleName">Role Name</label>
+          <input
+            type="text"
+            id="roleName"
+            name="roleName"
+            placeholder="Enter role name"
+            required
+          />
+        </div>
+        <button type="submit" class="submit-btn">Add Role</button>
+      </form>
+      <div class="list-container">
+        <h3>Existing Roles</h3>
+        <ul id="roleList" class="list"></ul>
+      </div>
+    </section>
+
+    <!-- Section for Other Settings -->
+    <section class="settings-section">
+      <h2>Other Settings</h2>
+      <div class="form-group">
+        <label for="openingHours">Opening Hours</label>
+        <input type="time" id="openingHours" name="openingHours" />
+      </div>
+      <div class="form-group">
+        <label for="closingHours">Closing Hours</label>
+        <input type="time" id="closingHours" name="closingHours" />
+      </div>
+      <button id="saveSettings" class="submit-btn">Save Settings</button>
+    </section>
+  </main>
+</div>
+{% endblock %} {% block script %}
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const departmentForm = document.getElementById("departmentForm");
+    const roleForm = document.getElementById("roleForm");
+    const departmentList = document.getElementById("departmentList");
+    const roleList = document.getElementById("roleList");
+    const saveSettingsButton = document.getElementById("saveSettings");
+
+    // Example storage for departments and roles (Replace with API calls)
+    let departments = [];
+    let roles = [];
+
+    // Handle adding a department
+    departmentForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const departmentName = document
+        .getElementById("departmentName")
+        .value.trim();
+      if (departmentName) {
+        departments.push(departmentName);
+        updateDepartmentList();
+        departmentForm.reset();
+      }
+    });
+
+    // Handle adding a role
+    roleForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const roleName = document.getElementById("roleName").value.trim();
+      if (roleName) {
+        roles.push(roleName);
+        updateRoleList();
+        roleForm.reset();
+      }
+    });
+
+    // Update department list
+    function updateDepartmentList() {
+      departmentList.innerHTML = departments
+        .map((dept) => `<li>${dept}</li>`)
+        .join("");
+    }
+
+    // Update role list
+    function updateRoleList() {
+      roleList.innerHTML = roles.map((role) => `<li>${role}</li>`).join("");
+    }
+
+    // Handle saving settings
+    saveSettingsButton.addEventListener("click", () => {
+      const openingHours = document.getElementById("openingHours").value;
+      const closingHours = document.getElementById("closingHours").value;
+
+      if (!openingHours || !closingHours) {
+        alert("Please fill in all settings fields.");
+        return;
+      }
+
+      // Example save logic (Replace with API calls)
+      console.log("Saved Settings:", {
+        openingHours,
+        closingHours,
+      });
+
+      alert("Settings saved successfully!");
+    });
+  });
+</script>
+{% endblock %}
