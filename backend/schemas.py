@@ -12,6 +12,10 @@ class UserAdminForm(BaseModel):
         password: str = Form(...)
     ) -> "UserAdminForm":
         return cls(**locals())
+    
+class Token(BaseModel):
+    access_token: str
+    token_type: str
 
 class ServiceForm(BaseModel):
     name: str
