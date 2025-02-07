@@ -3,13 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content=""/>
-    <meta name="keywords" content=""/>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
     <meta name="google" content="nopagereadaloud" />
     <meta name="googlebot" content="notranslate" />
     <meta name="robot" content="max-snippet:-1, max-image-preview:standard" />
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <link rel="stylesheet" href="static/pages/root.css" />
     {% block head %} {% endblock %}
   </head>
@@ -28,8 +34,8 @@
             <div class="sidebarMenu">
               <h3 class="sidebarTitle">Overview</h3>
               <ul class="sidebarList">
-                <a class="sidebarLink" href="{{ url_for('dashboard') }}">
-                  <li class="sidebarListItem">
+                <a class="sidebarLink active" href="{{ url_for('dashboard') }}">
+                  <li class="sidebarListItem active">
                     <span class="sidebarIcon">
                       <i class="fa-solid fa-house"></i>
                     </span>
@@ -47,7 +53,7 @@
               </ul>
             </div>
 
-            <hr width="80%" size="1" color="#bbb9b9">
+            <hr width="80%" size="1" color="#bbb9b9" />
 
             <div class="sidebarMenu">
               <h3 class="sidebarTitle">System</h3>
@@ -87,7 +93,7 @@
               </ul>
             </div>
 
-            <hr width="80%" size="1" color="#bbb9b9">
+            <hr width="80%" size="1" color="#bbb9b9" />
 
             <div class="sidebarMenu">
               <h3 class="sidebarTitle">Management</h3>
@@ -150,6 +156,21 @@
 
         sideBar.style.display = isOpen ? "none" : "block";
         dashboardContent.style.left = isOpen ? "10px" : "var(--content-width)";
+      });
+
+      // making a ul.li navlink active
+      document.addEventListener("DOMContentLoaded", () => {
+        const sidebarLinks = document.querySelectorAll(".sidebarlink");
+
+        sidebarLinks.forEach(link => {
+          link.addEventListener("click", () => {
+            sidebarLinks.forEach((link) =>
+              link.querySelector(".sidebarListItem").classList.remove("active")
+            );
+
+            link.querySelector(".sidebarListItem").classList.add("active");
+          });
+        });
       });
     </script>
     {% block script %} {% endblock %}

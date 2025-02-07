@@ -83,11 +83,13 @@
   align-items: center;
 }
 
-a .sidebarLink,
-.sidebarListItem.active,
-.sidebarListItem:hover {
+.sidebarListItem.active {
   background: rgb(174, 226, 243);
   color: black;
+}
+
+.sidebarListItem:hover {
+  background: rgb(186, 247, 204);
 }
 
 .sidebarIcon {
