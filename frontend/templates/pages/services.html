@@ -53,7 +53,8 @@
     </div>
   </div>
   <div class="serviceForm">
-    <form action="{{ url_for('add_new_service') }}" method="POST">
+    <form action="{% url 'services' %}" method="POST">
+      {% csrf_token %}
       <div class="serviceInput">
         <span>Service Name</span>
         <input type="text" name="name" />

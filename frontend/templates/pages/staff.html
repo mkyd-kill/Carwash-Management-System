@@ -34,32 +34,7 @@
             <th></th>
           </tr>
         </thead>
-        <tbody class="staffTableBody">
-          {% for staff in staffs %}
-          <tr>
-            <td>{{ staff.id }}</td>
-            <td>{{ staff.staff_id }}</td>
-            <td>{{ staff.name }}</td>
-            <td>{{ staff.role }}</td>
-            <td>{{ staff.department }}</td>
-            <td>{{ staff.contact }}</td>
-            <td>{{ "{:,.0f}".format(staff.commission) }}</td>
-            <td>{{ "{:,.0f}".format(staff.salary) }}</td>
-            <td>
-              {% if staff.status == 'Active' %}
-              <span class="status active">{{ staff.status }}</span>
-              {% else %}
-              <span class="status inactive">{{ staff.status }}</span>
-              {% endif %}
-            </td>
-            <td>
-              <button class="viewDetail actionBtn editBtn">
-                <a href="{{ url_for('staff_details', staff_id=staff.id) }}">View</a>
-              </button>
-            </td>
-          </tr>
-          {% endfor %}
-        </tbody>
+        
       </table>
     </div>
   </div>
@@ -76,7 +51,8 @@
     </div>
   </div>
   <div class="staffForm">
-    <form action="{{ url_for('add_new_staff') }}" method="POST">
+    <form action="{% url 'staffs' %}" method="POST">
+      {% csrf_token %}
       <div class="formGrid">
         <div class="staffInput">
           <label for="name">Staff Name</label>
