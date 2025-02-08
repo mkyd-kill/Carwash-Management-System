@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .forms import DataForm
+from .models import Staff
 
 def index(request):
     return render(request, "login.html")
@@ -42,8 +43,35 @@ def settings(request):
 
 def staffs(request):
     if request.method == 'POST':
-        pass
-    return render(request, "pages/staff.html")
+        name = request.POST["name"]
+        national_id = request.POST["staff_id"]
+        email = request.POST["email"]
+        gender = request.POST["gender"]
+        role = request.POST["role"]
+        department = request.POST["department"]
+        contact = request.POST["contact"]
+        commission = request.POST["commission"]
+        salary = request.POST["salary"]
+        status = request.POST['status']
+
+        created_item = Staff.objects.create(
+            name=name,
+            national_id=national_id,
+            email=email,
+            gender=gender,
+            contact=contact,
+            commission=commission,
+            salary=salary,
+            status=status,
+            role=role,
+            department=department
+        )
+        return redirect("staffs")
+    get_all_staff = Staff.objects.all()
+    context = {
+        "staffs": get_all_staff
+    }
+    return render(request, "pages/staff.html", context)
 
 def get_one_staff(request, id: int):
     return render(request, "pages/details.html")

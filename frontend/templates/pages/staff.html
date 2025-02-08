@@ -34,7 +34,33 @@
             <th></th>
           </tr>
         </thead>
-        
+        <!-- staff section table -->
+        <tbody class="staffTableBody">
+          {% for staff in staffs %}
+          <tr>
+            <td>{{ staff.id }}</td>
+            <td>{{ staff.national_id }}</td>
+            <td>{{ staff.name }}</td>
+            <td>{{ staff.role }}</td>
+            <td>{{ staff.department }}</td>
+            <td>{{ staff.contact }}</td>
+            <td>{{ staff.commission }}</td>
+            <td>{{ staff.salary }}</td>          
+            <td>
+              {% if staff.status == 'Active' %}
+              <span class="status active">{{ staff.status }}</span>
+              {% else %}
+              <span class="status inactive">{{ staff.status }}</span>
+              {% endif %}
+            </td>
+            <td>
+              <button class="viewDetail actionBtn editBtn">
+                <a href="">View</a>
+              </button>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
       </table>
     </div>
   </div>
@@ -56,15 +82,30 @@
       <div class="formGrid">
         <div class="staffInput">
           <label for="name">Staff Name</label>
-          <input type="text" name="name" id="name" placeholder="Enter staff name" />
+          <input
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Enter staff name"
+          />
         </div>
         <div class="staffInput">
           <label for="staff_id">Staff ID</label>
-          <input type="number" name="staff_id" id="staff_id" placeholder="Enter Staff National ID">
+          <input
+            type="number"
+            name="staff_id"
+            id="staff_id"
+            placeholder="Enter Staff National ID"
+          />
         </div>
         <div class="staffInput">
           <label for="email">Staff Contact Email</label>
-          <input type="email" name="email" id="email" placeholder="Enter contact email">
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Enter contact email"
+          />
         </div>
         <div class="staffInput">
           <label for="gender">Staff Gender</label>
@@ -72,28 +113,52 @@
             <option value="">Select gender</option>
             <option value="Male">Male</option>
             <option value="Female">Female</option>
-            <option value="Other">Other</option>
           </select>
         </div>
         <div class="staffInput">
           <label for="role">Staff Role</label>
-          <input type="text" name="role" id="role" placeholder="Enter staff role" />
+          <input
+            type="text"
+            name="role"
+            id="role"
+            placeholder="Enter staff role"
+          />
         </div>
         <div class="staffInput">
           <label for="department">Staff Department</label>
-          <input type="text" name="department" id="department" placeholder="Enter department" />
+          <input
+            type="text"
+            name="department"
+            id="department"
+            placeholder="Enter department"
+          />
         </div>
         <div class="staffInput">
           <label for="contact">Staff Contact Number</label>
-          <input type="tel" name="contact" id="contact" placeholder="Enter contact number" />
+          <input
+            type="tel"
+            name="contact"
+            id="contact"
+            placeholder="Enter contact number"
+          />
         </div>
         <div class="staffInput">
           <label for="commission">Staff Commission (KSH)</label>
-          <input type="number" name="commission" id="commission" placeholder="Enter commission amount" />
+          <input
+            type="number"
+            name="commission"
+            id="commission"
+            placeholder="Enter commission amount"
+          />
         </div>
         <div class="staffInput">
           <label for="salary">Staff Salary (KSH)</label>
-          <input type="number" name="salary" id="salary" placeholder="Enter salary" />
+          <input
+            type="number"
+            name="salary"
+            id="salary"
+            placeholder="Enter salary"
+          />
         </div>
         <div class="staffInput">
           <label for="status">Staff Status</label>

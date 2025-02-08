@@ -32,7 +32,8 @@ class Staff(BaseModel):
     commission = models.PositiveIntegerField(default="0712345678")
     salary = models.PositiveIntegerField(default=0)
     status = models.CharField(max_length=10, choices=STATUS, default="Active")
-    job = models.ForeignKey(StaffManagement, on_delete=models.CASCADE, null=False)
+    role = models.CharField(max_length=50)
+    department = models.CharField(max_length=50)
 
 class Transactions(BaseModel):
     vehicle = models.CharField(max_length=50)
