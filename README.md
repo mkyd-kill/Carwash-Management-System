@@ -18,5 +18,5 @@ pip install -r requirements.txt
 To run project server on local machine, run:
 
 ```shell
-python main.py
+python manage.py runserver
 ```
