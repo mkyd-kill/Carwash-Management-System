@@ -1,6 +1,6 @@
-{% extends "pages/root.html" %} {% block head %}
+{% extends "pages/root.html" %} {% load static %} {% block head %}
 <title>Sales - CarWash POS</title>
-<link rel="stylesheet" href="static/pages/sales.css" />
+<link rel="stylesheet" href="{% static 'pages/sales.css' %}" />
 {% endblock %} {% block content %}
 <div class="sales-page">
   <header class="sales-header">

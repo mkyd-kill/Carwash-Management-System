@@ -1,6 +1,6 @@
-{% extends "pages/root.html" %} {% block head %}
+{% extends "pages/root.html" %} {% load static %} {% block head %}
 <title>Transactions</title>
-<link rel="stylesheet" href="static/pages/transactions.css" />
+<link rel="stylesheet" href="{% static 'pages/transactions.css' %}" />
 {% endblock %} {% block content %}
 <div class="transactionContainer">
   <div class="transactionWrapper">

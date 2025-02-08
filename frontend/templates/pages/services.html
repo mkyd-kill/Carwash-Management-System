@@ -1,6 +1,6 @@
-{% extends "pages/root.html" %} {% block head %}
+{% extends "pages/root.html" %} {% load static %} {% block head %}
 <title>Services</title>
-<link rel="stylesheet" href="static/pages/services.css" />
+<link rel="stylesheet" href="{% static 'pages/services.css' %}" />
 {% endblock %} {% block content %}
 <div class="servicesContainer">
   <div class="service">
