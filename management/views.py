@@ -80,6 +80,7 @@ def staffs(request):
             role=role,
             department=department
         )
+        created_item.save()
         return redirect("staffs")
     get_all_staff = Staff.objects.all()
     context = {
@@ -88,7 +89,11 @@ def staffs(request):
     return render(request, "pages/staff.html", context)
 
 def get_one_staff(request, id: int):
-    return render(request, "pages/details.html")
+    staff = get_object_or_404(Staff, pk=id)
+    if staff:
+        return render(request, "pages/details.html", {"staff": staff})
+    messages.error(request, f"Staff with staff_id: {id} Not Found")
+    return redirect("staffs")
 
 def transactions(request):
     return render(request, "pages/transactions.html")
