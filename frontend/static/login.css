@@ -1,11 +1,26 @@
 body {
   margin: 0;
   height: 100vh;
-  display: flex;
+  display: block;
   justify-content: center;
   align-items: center;
   background: darkslategrey;
   font-family: sans-serif, monospace;
+}
+
+.alert-msg {
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.alert-msg.success {
+  background-color: #82e786;
+}
+
+.alert-msg.danger {
+  background-color: rgb(243, 107, 107);
 }
 
 .login-wrapper {

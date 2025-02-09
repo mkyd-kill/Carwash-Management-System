@@ -9,6 +9,7 @@ class BaseModel(models.Model):
 
 class SiteAdmin(BaseModel):
     username = models.CharField(max_length=100)
+    email = models.EmailField(unique=True)
     hashed_password = models.CharField(max_length=256)
 
 class StaffManagement(BaseModel):

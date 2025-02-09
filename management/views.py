@@ -1,6 +1,7 @@
-from django.shortcuts import render, redirect
-from .forms import DataForm
-from .models import Staff
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
+from .models import Staff, SiteAdmin
 
 def index(request):
     return render(request, "login.html")
@@ -13,7 +14,20 @@ def logout_access_token(request):
 
 def post_register_form(request):
     if request.method == 'POST':
-        form = DataForm(request.POST)
+        username = request.POST['username']
+        password = request.POST['password']
+        email = request.POST['email']
+        
+        if SiteAdmin.objects.filter(username=username).exists():
+            messages.error(request, "Username already taken. Try using another one.")
+            return redirect("index")
+        
+        site_admin = SiteAdmin.objects.create(username=username, hashed_password=password, email=email)
+        site_admin.is_active = False
+        site_admin.save()
+        messages.success(request, "Account Created Successfully!!!")
+        
+    return redirect("index")
 
 def dashboard(request):
     return render(request, "pages/dashboard.html")

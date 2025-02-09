@@ -1,60 +1,116 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet"/>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
     <title>Login Page</title>
-    <link rel="stylesheet" href="{% static 'login.css' %}">
-</head>
-<body>
-    <div class="login-wrapper">
+    <link rel="stylesheet" href="{% static 'login.css' %}" />
+  </head>
+  <body>
+    <div class="base-wrapper">
+        {% if messages %}
+          {% for message in messages %}
+            {% if message == 'success' %}
+              <div class="alert-msg success">
+                <p>{{ message }}</p>
+              </div>
+            {% else %}
+            <div class="alert-msg danger">
+              <p>{{ message }}</p>
+            </div>
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+      <div class="login-wrapper">
         <div class="logo-content">
           <span class="icon">
-              <i class="ri-car-washing-fill"></i>
+            <i class="ri-car-washing-fill"></i>
           </span>
         </div>
         <div class="login-form-details">
           <div class="welcome-intro">
             <p>
-              Number One Carwash Monitoring Application for your Customers, Staff and Finances
+              Number One Carwash Monitoring Application for your Customers, Staff
+              and Finances
             </p>
           </div>
           <div class="login-form">
-            <form action="{% url 'login-token' %}" method="POST" autocapitalize="off" autocomplete="off">
+            <form
+              action="{% url 'login-token' %}"
+              method="POST"
+              autocapitalize="off"
+              autocomplete="off"
+            >
               {% csrf_token %}
-              <input type="text" placeholder="username" name="username" required/>
-              <input type="password" placeholder="password" name="password" required/>
-              <button type="submit" class="submit-form">Proceed to Dashboard</button>
+              <input
+                type="text"
+                placeholder="username"
+                name="username"
+                required
+              />
+              <input
+                type="password"
+                placeholder="password"
+                name="password"
+                required
+              />
+              <button type="submit" class="submit-form">
+                Proceed to Dashboard
+              </button>
             </form>
           </div>
           <div class="open-register-form">
             <button class="open-form">Click Here to Register New Account</button>
           </div>
           <div class="register-form">
-            <form action="{% url 'register-new' %}" method="POST" autocapitalize="off" autocomplete="off">
+            <form
+              action="{% url 'register-new' %}"
+              method="POST"
+              autocapitalize="off"
+              autocomplete="off"
+            >
               {% csrf_token %}
-              <input type="text" placeholder="username" name="username" required/>
-              <input type="password" placeholder="password" name="password" required/>
-              <input type="password" placeholder="confirm password" name="password2" required/>
+              <input
+                type="text"
+                placeholder="username"
+                name="username"
+                required
+              />
+              <input
+                type="email"
+                placeholder="email"
+                name="email"
+                required
+              />
+              <input
+                type="password"
+                placeholder="password"
+                name="password"
+                required
+              />
               <button type="submit" class="submit-form">Register Account</button>
             </form>
           </div>
         </div>
       </div>
+    </div>
 
-      <script>
-        let login_form = document.querySelector(".login-form");
-        let register_form = document.querySelector(".register-form");
-        let open_div = document.querySelector(".open-register-form");
-        let open_btn = document.querySelector(".open-form");
+    <script>
+      let login_form = document.querySelector(".login-form");
+      let register_form = document.querySelector(".register-form");
+      let open_div = document.querySelector(".open-register-form");
+      let open_btn = document.querySelector(".open-form");
 
-        open_btn.addEventListener("click", () => {
-          login_form.style.display = "none";
-          register_form.style.display = "block";
-          open_div.style.display = "none";
-        });
-      </script>
-</body>
+      open_btn.addEventListener("click", () => {
+        login_form.style.display = "none";
+        register_form.style.display = "block";
+        open_div.style.display = "none";
+      });
+    </script>
+  </body>
 </html>
