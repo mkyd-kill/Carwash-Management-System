@@ -45,7 +45,7 @@
             <td>{{ staff.department }}</td>
             <td>{{ staff.contact }}</td>
             <td>{{ staff.commission }}</td>
-            <td>{{ staff.salary }}</td>          
+            <td>{{ staff.salary }}</td>         
             <td>
               {% if staff.status == 'Active' %}
               <span class="status active">{{ staff.status }}</span>
@@ -55,7 +55,7 @@
             </td>
             <td>
               <button class="viewDetail actionBtn editBtn">
-                <a href="">View</a>
+                <a href="{% url 'details' staff.id %}">View</a>
               </button>
             </td>
           </tr>
