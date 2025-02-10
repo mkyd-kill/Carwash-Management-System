@@ -60,11 +60,11 @@
         </div>
         <div class="staff-detail">
           <span>Commission:</span>
-          <strong>{{ staff.commission }}</strong>
+          <strong>KSH {{ staff.commission }}</strong>
         </div>
         <div class="staff-detail">
           <span>Salary:</span>
-          <strong>{{ staff.salary }}</strong>
+          <strong>KSH {{ staff.salary }}</strong>
         </div>
         <div class="staff-detail">
           <span>Status:</span>
@@ -80,10 +80,10 @@
     <!-- Action Buttons -->
     <div class="action-buttons">
       <button class="actionBtn updateBtn">
-        <a href="/update-staff/{{ staff.id }}">Update Entry</a>
+        <a href="{% url 'update' staff.id}">Edit Entry</a>
       </button>
       <button class="actionBtn deleteBtn">
-        <a href="/delete-staff/{{ staff.id }}">Delete Entry</a>
+        <a href="{% url 'delete' staff.id %}">Delete Entry</a>
       </button>
     </div>
   </div>

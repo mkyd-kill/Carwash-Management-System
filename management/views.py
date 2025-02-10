@@ -89,10 +89,18 @@ def staffs(request):
     return render(request, "pages/staff.html", context)
 
 def get_one_staff(request, id: int):
-    staff = get_object_or_404(Staff, pk=id)
-    if staff:
-        return render(request, "pages/details.html", {"staff": staff})
-    messages.error(request, f"Staff with staff_id: {id} Not Found")
+    staff = Staff.objects.get(pk=id)
+    if not staff:
+        messages.error(request, f"Staff with staff_id: {id} Not Found")
+        return redirect("staffs")
+    return render(request, "pages/details.html", {"staff": staff})
+
+def update_staff(request, id: int):
+    pass
+
+def delete_staff(request, id: int):
+    staff = Staff.objects.get(id=id)
+    staff.delete()
     return redirect("staffs")
 
 def transactions(request):
