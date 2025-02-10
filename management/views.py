@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.hashers import check_password, make_password
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
@@ -9,7 +9,20 @@ def index(request):
     return render(request, "login.html")
 
 def login_for_access_token(request):
-    pass
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+
+        staff = get_object_or_404(SiteAdmin, username=username)
+        if not staff:
+            messages.error("User Not Registered")
+            return redirect("index")
+        
+        if check_password(password, staff.hashed_password):
+            login(request, staff.username)
+            return redirect("dashboard")
+    return redirect("index")
+
 
 def logout_access_token(request):
     pass
