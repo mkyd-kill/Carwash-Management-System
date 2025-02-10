@@ -13,19 +13,7 @@
   </head>
   <body>
     <div class="base-wrapper">
-        {% if messages %}
-          {% for message in messages %}
-            {% if message == 'success' %}
-              <div class="alert-msg success">
-                <p>{{ message }}</p>
-              </div>
-            {% else %}
-            <div class="alert-msg danger">
-              <p>{{ message }}</p>
-            </div>
-            {% endif %}
-          {% endfor %}
-        {% endif %}
+        {% include 'message.html' %}
       <div class="login-wrapper">
         <div class="logo-content">
           <span class="icon">
@@ -56,10 +44,10 @@
               <input
                 type="password"
                 placeholder="password"
-                name="password"
+                name="hashed_password"
                 required
               />
-              <button type="submit" class="submit-form">
+              <button type="submit" class="submit-form" formvalidate>
                 Proceed to Dashboard
               </button>
             </form>
@@ -90,7 +78,7 @@
               <input
                 type="password"
                 placeholder="password"
-                name="password"
+                name="hashed_password"
                 required
               />
               <button type="submit" class="submit-form">Register Account</button>

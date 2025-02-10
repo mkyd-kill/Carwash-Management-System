@@ -12,10 +12,6 @@ class SiteAdmin(BaseModel):
     email = models.EmailField(unique=True)
     hashed_password = models.CharField(max_length=256)
 
-class StaffManagement(BaseModel):
-    role = models.CharField(max_length=50)
-    department = models.CharField(max_length=50)
-
 class Staff(BaseModel):
     GENDER = (
         ('Male', 'm'),

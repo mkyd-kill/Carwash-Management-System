@@ -1,7 +1,9 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
+from django.contrib.auth.hashers import check_password, make_password
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from .models import Staff, SiteAdmin
+from .forms import AdminForm
 
 def index(request):
     return render(request, "login.html")
@@ -14,19 +16,26 @@ def logout_access_token(request):
 
 def post_register_form(request):
     if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-        email = request.POST['email']
+        form = AdminForm(request.POST)
+
+        if form.is_valid():
+            if SiteAdmin.objects.filter(username=form['username'].value()).exists():
+                messages.error(request, "Username already taken. Try using another one.")
+                return redirect("index")
         
-        if SiteAdmin.objects.filter(username=username).exists():
-            messages.error(request, "Username already taken. Try using another one.")
+            if SiteAdmin.objects.filter(email=form['email'].value()).exists():
+                messages.error(request, "Email already taken. Try using another one.")
+                return redirect("index")
+            
+            username = form['username'].value()
+            email = form["email"].value()
+            hashed_password = make_password(form['hashed_password'].value())
+            
+            site_admin = SiteAdmin.objects.create(username=username, hashed_password=hashed_password, email=email)
+            site_admin.is_active = False
+            site_admin.save()
+            messages.success(request, "Account Created Successfully!!!")
             return redirect("index")
-        
-        site_admin = SiteAdmin.objects.create(username=username, hashed_password=password, email=email)
-        site_admin.is_active = False
-        site_admin.save()
-        messages.success(request, "Account Created Successfully!!!")
-        
     return redirect("index")
 
 def dashboard(request):
