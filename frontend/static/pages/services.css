@@ -160,3 +160,21 @@
   border: solid 1px lightgreen;
   transition: ease-in-out;
 }
+
+.saveServiceBtn {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #5cb85c;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s;
+}
+
+.saveServiceBtn:hover {
+  background-color: #4cae4c;
+}

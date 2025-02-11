@@ -10,7 +10,7 @@ class BaseModel(models.Model):
 class SiteAdmin(BaseModel):
     username = models.CharField(max_length=100)
     email = models.EmailField(unique=True)
-    hashed_password = models.CharField(max_length=256)
+    password = models.CharField(max_length=256)
 
 class Staff(BaseModel):
     GENDER = (
@@ -22,11 +22,11 @@ class Staff(BaseModel):
         ('Inactive', 'inactive')
     )
     name = models.CharField(max_length=100)
-    national_id = models.CharField(max_length=10)
+    national_id = models.PositiveIntegerField(default=0)
     email = models.EmailField(unique=True)
     gender = models.CharField(max_length=8, choices=GENDER, default="Male")
     contact = models.CharField(max_length=12)
-    commission = models.PositiveIntegerField(default="0712345678")
+    commission = models.PositiveIntegerField(default=0)
     salary = models.PositiveIntegerField(default=0)
     status = models.CharField(max_length=10, choices=STATUS, default="Active")
     role = models.CharField(max_length=50)
