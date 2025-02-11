@@ -1,16 +1,16 @@
 {% extends "pages/root.html" %} {% load static %} {% block head %}
 <title>Staff</title>
-<link rel="stylesheet" href="{% static 'pages/staff.css' %}" />
+<link rel="stylesheet" href="{% static 'pages/compact.css' %}" />
 {% endblock %} {% block content %}
-<div class="staffContainer">
-  <div class="staffWrapper">
-    <div class="staffHeader">
+<div class="itemContainer">
+  <div class="itemWrapper">
+    <div class="itemHeader">
       <div class="leftBar">
-        <h2 class="staffTitle">Staff</h2>
-        <span class="staffInfo">List of staff</span>
+        <h2 class="itemTitle">Staff</h2>
+        <span class="itemInfo">List of staff</span>
       </div>
       <div class="rightBar">
-        <button class="addstaffBtn">
+        <button class="additemBtn">
           <span class="addIcon">
             <i class="fa-solid fa-plus"></i>
           </span>
@@ -18,8 +18,9 @@
         </button>
       </div>
     </div>
-    <div class="staffTableWrapper">
-      <table class="staffTable">
+    {% if data %}
+    <div class="itemTableWrapper">
+      <table class="itemTable">
         <thead>
           <tr>
             <th>#</th>
@@ -35,8 +36,8 @@
           </tr>
         </thead>
         <!-- staff section table -->
-        <tbody class="staffTableBody">
-          {% for staff in staffs %}
+        <tbody class="itemTableBody">
+          {% for staff in data %}
           <tr>
             <td>{{ staff.id }}</td>
             <td>{{ staff.national_id }}</td>
@@ -45,7 +46,7 @@
             <td>{{ staff.department }}</td>
             <td>{{ staff.contact }}</td>
             <td>{{ staff.commission }}</td>
-            <td>{{ staff.salary }}</td>         
+            <td>{{ staff.salary }}</td>
             <td>
               {% if staff.status == 'Active' %}
               <span class="status active">{{ staff.status }}</span>
@@ -63,12 +64,18 @@
         </tbody>
       </table>
     </div>
+    {% else %}
+    <div class="no-content">
+      <h2 class="no-info">NO CONTENT TO DISPLAY</h2>
+      <input type="file" name="load-data" id="load-data">
+    </div>
+    {% endif %}
   </div>
 </div>
-<section class="addStaff">
-  <div class="staffHeader">
+<section class="additem">
+  <div class="itemHeader">
     <div class="leftBar">
-      <h2 class="staffInfo">Add New Staff</h2>
+      <h2 class="itemInfo">Add New Staff</h2>
     </div>
     <div class="rightBar">
       <button class="closeFormBtn">
@@ -76,30 +83,12 @@
       </button>
     </div>
   </div>
-  <div class="staffForm">
+  <div class="itemForm">
     <form action="{% url 'staffs' %}" method="POST">
       {% csrf_token %}
       {{ form }}
-      <button type="submit" class="saveStaffBtn">Save Staff</button>
+      <button type="submit" class="saveitemBtn">Save Staff</button>
     </form>
   </div>
 </section>
-{% endblock %} {% block script %}
-<script>
-  // open and close the form
-  let service = document.querySelector(".staffContainer");
-  let form = document.querySelector(".addStaff");
-  let addBtn = document.querySelector(".addstaffBtn");
-  let closeBtn = document.querySelector(".closeFormBtn");
-
-  addBtn.addEventListener("click", () => {
-    service.style.display = "none";
-    form.style.display = "block";
-  });
-
-  closeBtn.addEventListener("click", () => {
-    form.style.display = "none";
-    service.style.display = "block";
-  });
-</script>
 {% endblock %}

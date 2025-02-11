@@ -141,39 +141,7 @@
       </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-      // opening and closing the sidebar
-      let sideBar = document.querySelector(".navbar-content");
-      let dashboardContent = document.querySelector(".content");
-      let menuBtn = document.querySelector(".menu-btn i");
-
-      menuBtn.addEventListener("click", () => {
-        menuBtn.classList.toggle("active");
-        let isOpen = menuBtn.classList.contains("active");
-
-        menuBtn.classList.toggle("fa-bars", !isOpen);
-        menuBtn.classList.toggle("fa-times", isOpen);
-
-        sideBar.style.display = isOpen ? "none" : "block";
-        dashboardContent.style.left = isOpen ? "10px" : "var(--content-width)";
-      });
-
-      // making a ul.li navlink active
-      document.addEventListener("DOMContentLoaded", () => {
-        const sidebarLinks = document.querySelectorAll(".sidebarlink");
-
-        sidebarLinks.forEach(link => {
-          link.addEventListener("click", () => {
-            sidebarLinks.forEach((link) =>
-              link.querySelector(".sidebarListItem").classList.remove("active")
-            );
-
-            link.querySelector(".sidebarListItem").classList.add("active");
-          });
-        });
-      });
-    </script>
+    <script src="{% static 'js/index.js' %}"></script>
     {% block script %} {% endblock %}
   </body>
 </html>

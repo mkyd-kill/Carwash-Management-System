@@ -1,15 +1,15 @@
-.staffContainer {
+.itemContainer {
   padding: 10px;
   background-color: #f8f9fc;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.staffWrapper {
+.itemWrapper {
   width: 100%;
 }
 
-.staffHeader {
+.itemHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -21,13 +21,13 @@
   flex-direction: column;
 }
 
-.staffTitle {
+.itemTitle {
   font-size: 24px;
   font-weight: bold;
   color: #343a40;
 }
 
-.staffInfo {
+.itemInfo {
   font-size: 14px;
   color: #6c757d;
 }
@@ -37,7 +37,7 @@
   align-items: center;
 }
 
-.addstaffBtn {
+.additemBtn {
   padding: 10px 20px;
   background-color: #007bff;
   color: #fff;
@@ -50,7 +50,7 @@
   transition: background-color 0.3s;
 }
 
-.addstaffBtn:hover {
+.additemBtn:hover {
   background-color: #0056b3;
 }
 
@@ -58,11 +58,11 @@
   margin-right: 8px;
 }
 
-.staffTableWrapper {
+.itemTableWrapper {
   overflow-x: auto;
 }
 
-.staffTable {
+.itemTable {
   width: 100%;
   border-collapse: collapse;
   background-color: #ffffff;
@@ -70,24 +70,24 @@
   overflow: hidden;
 }
 
-.staffTable th,
-.staffTable td {
+.itemTable th,
+.itemTable td {
   text-align: left;
   padding: 12px 15px;
   border: 1px solid #e9ecef;
   font-size: 14px;
 }
 
-.staffTable th {
+.itemTable th {
   background-color: #f1f3f5;
   color: #495057;
 }
 
-.staffTable td {
+.itemTable td {
   color: #495057;
 }
 
-.staffTable tbody tr:hover {
+.itemTable tbody tr:hover {
   background-color: #f8f9fa;
 }
 
@@ -114,8 +114,8 @@
   color: darkslategrey;
 }
 
-/* add staff section */
-.addStaff {
+/* add item section */
+.additem {
   max-width: 800px;
   margin: 0 auto;
   display: none;
@@ -127,7 +127,7 @@
   color: #333333;
 }
 
-.staffHeader {
+.itemHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -136,7 +136,7 @@
   margin-bottom: 20px;
 }
 
-.staffInfo {
+.itemInfo {
   font-size: 1.5rem;
   font-weight: bold;
   color: #555555;
@@ -155,26 +155,26 @@
   color: #ff4d4d;
 }
 
-.staffForm .formGrid {
+.itemForm .formGrid {
   display: grid;
   grid-template-columns: 2fr 2fr;
   gap: 40px;
   padding: 8px;
 }
 
-.staffInput {
+.itemInput {
   display: flex;
   flex-direction: column;
 }
 
-.staffInput label {
+.itemInput label {
   font-size: 1rem;
   margin-bottom: 5px;
   color: #666666;
 }
 
-.staffInput input,
-.staffInput select {
+.itemInput input,
+.itemInput select {
   font-size: 1rem;
   padding: 8px;
   border: 1px solid #dcdcdc;
@@ -183,14 +183,14 @@
   transition: border 0.3s, background-color 0.3s;
 }
 
-.staffInput input:focus,
-.staffInput select:focus {
+.itemInput input:focus,
+.itemInput select:focus {
   border: 1px solid #5cb85c;
   background-color: #ffffff;
   outline: none;
 }
 
-.saveStaffBtn {
+.saveitemBtn {
   width: 100%;
   padding: 10px;
   font-size: 1rem;
@@ -204,18 +204,18 @@
   transition: background-color 0.3s;
 }
 
-.saveStaffBtn:hover {
+.saveitemBtn:hover {
   background-color: #4cae4c;
 }
 
 @media (max-width: 768px) {
-  .staffForm .formGrid {
+  .itemForm .formGrid {
     grid-template-columns: 1fr;
   }
 }
 
 /* view details section */
-.viewStaffDetails {
+.viewitemDetails {
   max-width: 800px;
   margin: auto;
   background-color: #ffffff;
@@ -225,7 +225,7 @@
   font-family: "Arial", sans-serif;
 }
 
-.staff-details-wrapper {
+.item-details-wrapper {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -283,12 +283,12 @@
   color: #333;
 }
 
-.staff-name {
+.item-name {
   font-size: 24px;
   margin-bottom: 5px;
 }
 
-.staff-role {
+.item-role {
   font-size: 16px;
   color: #666;
   margin-bottom: 15px;
@@ -303,24 +303,24 @@
   color: #666;
 }
 
-.staff-details {
+.item-details {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 15px;
 }
 
-.staff-detail {
+.item-detail {
   font-size: 14px;
   color: #333;
 }
 
-.staff-detail span {
+.item-detail span {
   padding: 3px;
   color: #666;
   display: block;
 }
 
-.staff-detail strong {
+.item-detail strong {
   font-weight: 600;
 }
 

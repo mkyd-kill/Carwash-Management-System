@@ -67,7 +67,7 @@ def services(request):
             for error in form.errors.values():
                 messages.error(request, error)
     context = {
-        "services": Services.objects.all(),
+        "data": Services.objects.all(),
         "form": ServiceForm()
     }
     return render(request, "pages/services.html", context)
@@ -87,7 +87,7 @@ def staffs(request):
             for error in form.errors.values():
                 messages.error(request, error)
     context = {
-        "staffs": Staff.objects.all(),
+        "data": Staff.objects.all(),
         "form": StaffForm()
     }
     return render(request, "pages/staff.html", context)
