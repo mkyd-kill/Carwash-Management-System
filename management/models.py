@@ -14,12 +14,12 @@ class SiteAdmin(BaseModel):
 
 class Staff(BaseModel):
     GENDER = (
-        ('Male', 'm'),
-        ('Female', 'f')
+        ('m', 'Male'),
+        ('f', 'Female')
     )
     STATUS = (
-        ('Active', 'active'),
-        ('Inactive', 'inactive')
+        ('active', 'Active'),
+        ('inactive', 'Inactive')
     )
     name = models.CharField(max_length=100)
     national_id = models.PositiveIntegerField(default=0)

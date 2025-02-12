@@ -1,15 +1,15 @@
-.itemContainer {
+.staffContainer {
   padding: 10px;
   background-color: #f8f9fc;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.itemWrapper {
+.staffWrapper {
   width: 100%;
 }
 
-.itemHeader {
+.staffHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -21,13 +21,13 @@
   flex-direction: column;
 }
 
-.itemTitle {
+.staffTitle {
   font-size: 24px;
   font-weight: bold;
   color: #343a40;
 }
 
-.itemInfo {
+.staffInfo {
   font-size: 14px;
   color: #6c757d;
 }
@@ -37,7 +37,7 @@
   align-items: center;
 }
 
-.additemBtn {
+.addstaffBtn {
   padding: 10px 20px;
   background-color: #007bff;
   color: #fff;
@@ -50,7 +50,7 @@
   transition: background-color 0.3s;
 }
 
-.additemBtn:hover {
+.addstaffBtn:hover {
   background-color: #0056b3;
 }
 
@@ -58,11 +58,11 @@
   margin-right: 8px;
 }
 
-.itemTableWrapper {
+.staffTableWrapper {
   overflow-x: auto;
 }
 
-.itemTable {
+.staffTable {
   width: 100%;
   border-collapse: collapse;
   background-color: #ffffff;
@@ -70,24 +70,24 @@
   overflow: hidden;
 }
 
-.itemTable th,
-.itemTable td {
+.staffTable th,
+.staffTable td {
   text-align: left;
   padding: 12px 15px;
   border: 1px solid #e9ecef;
   font-size: 14px;
 }
 
-.itemTable th {
+.staffTable th {
   background-color: #f1f3f5;
   color: #495057;
 }
 
-.itemTable td {
+.staffTable td {
   color: #495057;
 }
 
-.itemTable tbody tr:hover {
+.staffTable tbody tr:hover {
   background-color: #f8f9fa;
 }
 
@@ -114,8 +114,8 @@
   color: darkslategrey;
 }
 
-/* add item section */
-.additem {
+/* add staff section */
+.addStaff {
   max-width: 800px;
   margin: 0 auto;
   display: none;
@@ -127,7 +127,7 @@
   color: #333333;
 }
 
-.itemHeader {
+.staffHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -136,7 +136,7 @@
   margin-bottom: 20px;
 }
 
-.itemInfo {
+.staffInfo {
   font-size: 1.5rem;
   font-weight: bold;
   color: #555555;
@@ -155,26 +155,26 @@
   color: #ff4d4d;
 }
 
-.itemForm form {
+.staffForm .formGrid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 15px;
+  grid-template-columns: 2fr 2fr;
+  gap: 40px;
   padding: 8px;
 }
 
-.itemInput {
+.staffInput {
   display: flex;
   flex-direction: column;
 }
 
-form label {
+.staffInput label {
   font-size: 1rem;
   margin-bottom: 5px;
   color: #666666;
 }
 
-form input,
-form select {
+.staffInput input,
+.staffInput select {
   font-size: 1rem;
   padding: 8px;
   border: 1px solid #dcdcdc;
@@ -183,14 +183,14 @@ form select {
   transition: border 0.3s, background-color 0.3s;
 }
 
-form input:focus,
-form select:focus {
+.staffInput input:focus,
+.staffInput select:focus {
   border: 1px solid #5cb85c;
   background-color: #ffffff;
   outline: none;
 }
 
-.saveitemBtn {
+.saveStaffBtn {
   width: 100%;
   padding: 10px;
   font-size: 1rem;
@@ -204,18 +204,18 @@ form select:focus {
   transition: background-color 0.3s;
 }
 
-.saveitemBtn:hover {
+.saveStaffBtn:hover {
   background-color: #4cae4c;
 }
 
 @media (max-width: 768px) {
-  .itemForm form {
+  .staffForm .formGrid {
     grid-template-columns: 1fr;
   }
 }
 
 /* view details section */
-.viewitemDetails {
+.viewStaffDetails {
   max-width: 800px;
   margin: auto;
   background-color: #ffffff;
@@ -225,7 +225,7 @@ form select:focus {
   font-family: "Arial", sans-serif;
 }
 
-.item-details-wrapper {
+.staff-details-wrapper {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -283,12 +283,12 @@ form select:focus {
   color: #333;
 }
 
-.item-name {
+.staff-name {
   font-size: 24px;
   margin-bottom: 5px;
 }
 
-.item-role {
+.staff-role {
   font-size: 16px;
   color: #666;
   margin-bottom: 15px;
@@ -303,24 +303,24 @@ form select:focus {
   color: #666;
 }
 
-.item-details {
+.staff-details {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 15px;
 }
 
-.item-detail {
+.staff-detail {
   font-size: 14px;
   color: #333;
 }
 
-.item-detail span {
+.staff-detail span {
   padding: 3px;
   color: #666;
   display: block;
 }
 
-.item-detail strong {
+.staff-detail strong {
   font-weight: 600;
 }
 
