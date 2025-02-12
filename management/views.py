@@ -66,6 +66,11 @@ def services(request):
         else:
             for error in form.errors.values():
                 messages.error(request, error)
+        
+        if 'delete' in request.POST:
+            get_object_or_404(Services, pk=request.POST.get("delete")).delete()
+            return redirect("services")
+
     context = {
         "data": Services.objects.all(),
         "form": ServiceForm()
@@ -86,6 +91,11 @@ def staffs(request):
         else:
             for error in form.errors.values():
                 messages.error(request, error)
+        
+        if 'delete' in request.POST:
+            get_object_or_404(Staff, pk=request.POST.get("delete")).delete()
+            return redirect("staffs")
+        
     context = {
         "data": Staff.objects.all(),
         "form": StaffForm()
@@ -98,10 +108,6 @@ def get_one_staff(request, id: int):
 
 def update_staff(request, id: int):
     pass
-
-def delete_staff(request, id: int):
-    get_object_or_404(Staff, pk=id).delete()
-    return redirect("staffs")
 
 def transactions(request):
     return render(request, "pages/transactions.html")

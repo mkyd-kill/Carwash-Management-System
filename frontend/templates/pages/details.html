@@ -1,16 +1,17 @@
 {% extends "pages/root.html" %} {% load static %} {% block head %}
 <title>Staff Details</title>
-<link rel="stylesheet" href="{% static 'pages/staff.css' %}" />
+<link rel="stylesheet" href="{% static 'pages/compact.css' %}" />
 {% endblock %} {% block content %}
-<section class="viewStaffDetails">
-  <div class="staff-details-wrapper">
+<section class="viewitemDetails">
+  <div class="item-details-wrapper">
     <!-- Header with Return Button -->
     <div class="header-bar">
-      <button class="returnBtn">
-        <a href="{% url 'staffs' %}">
-          <i class="fa-solid fa-arrow-left"></i> Return to Employees
-        </a>
-      </button>
+      <a href="{% url 'staffs' %}">
+        <button class="returnBtn">
+          <i class="fa-solid fa-arrow-left"></i>
+          Return to Back
+        </button>
+      </a>
     </div>
 
     <!-- Main Card Section -->
@@ -22,7 +23,7 @@
         </div>
         <!-- Basic Information -->
         <div class="basic-info">
-          <h2 class="staff-name">{{ staff.name }}</h2>
+          <h2 class="item-name">{{ staff.name }}</h2>
           <div class="minor-details">
             <div class="detail-item">
               <span>Staff ID:</span>
@@ -37,38 +38,38 @@
       </div>
 
       <!-- Detailed Information -->
-      <div class="staff-details">
-        <div class="staff-detail">
+      <div class="item-details">
+        <div class="item-detail">
           <span>Role:</span>
           <strong>{{ staff.role }}</strong>
         </div>
-        <div class="staff-detail">
+        <div class="item-detail">
           <span>Department:</span>
           <strong>{{ staff.department }}</strong>
         </div>
-        <div class="staff-detail">
+        <div class="item-detail">
           <span>National ID:</span>
           <strong>{{ staff.national_id }}</strong>
         </div>
-        <div class="staff-detail">
+        <div class="item-detail">
           <span>Gender:</span>
           <strong>{{ staff.gender }}</strong>
         </div>
-        <div class="staff-detail">
+        <div class="item-detail">
           <span>Contact Number:</span>
           <strong>{{ staff.contact }}</strong>
         </div>
-        <div class="staff-detail">
+        <div class="item-detail">
           <span>Commission:</span>
           <strong>KSH {{ staff.commission }}</strong>
         </div>
-        <div class="staff-detail">
+        <div class="item-detail">
           <span>Salary:</span>
           <strong>KSH {{ staff.salary }}</strong>
         </div>
-        <div class="staff-detail">
+        <div class="item-detail">
           <span>Status:</span>
-          {% if staff.status == 'Active' %}
+          {% if staff.status == 'active' %}
           <strong class="status active">{{ staff.status }}</strong>
           {% else %}
           <strong class="status inactive">{{ staff.status }}</strong>
@@ -79,12 +80,11 @@
 
     <!-- Action Buttons -->
     <div class="action-buttons">
-      <button class="actionBtn updateBtn">
-        <a href="{% url 'update' staff.id}">Edit Entry</a>
-      </button>
-      <button class="actionBtn deleteBtn">
-        <a href="{% url 'delete' staff.id %}">Delete Entry</a>
-      </button>
+      <form action="{% url 'staffs' %}" method="POST">
+        {% csrf_token %}
+        <button class="actionBtn updateBtn">Edit Entry</button>
+        <button class="actionBtn deleteBtn" name="delete" value="{{ staff.id }}">Delete Entry</button>
+      </form>
     </div>
   </div>
 </section>

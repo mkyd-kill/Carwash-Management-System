@@ -55,10 +55,10 @@
               {% endif %}
             </td>
             <td>
-              <form action="{% url 'services' %}" method="post">
+              <form action="{% url 'services' %}" method="POST">
                 {% csrf_token %}
                 <button class="actionBtn editBtn">Edit</button>
-                <button class="actionBtn deleteBtn">Delete</button>
+                <button class="actionBtn deleteBtn" name="delete" value="{{ service.id }}">Delete</button>
               </form>
             </td>
           </tr>
