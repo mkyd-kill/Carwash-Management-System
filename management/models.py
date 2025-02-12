@@ -32,20 +32,31 @@ class Staff(BaseModel):
     role = models.CharField(max_length=50)
     department = models.CharField(max_length=50)
 
-class Transactions(BaseModel):
-    vehicle = models.CharField(max_length=50)
-
 class Services(BaseModel):
     STATUS = (
-        ('Offered', 'offered'),
-        ('Not Offered', 'not')
+        ('offered', 'Offered'),
+        ('not offered', 'Not Offered')
     )
     AVAILABILITY = (
-        ('Available', 'available'),
-        ('Unavailable', 'unavailable')
+        ('available', 'Available'),
+        ('unavailable', 'Unavailable')
     )
     name = models.CharField(max_length=50)
     cost = models.PositiveIntegerField(default=0)
     discount = models.PositiveIntegerField(default=0)
     status = models.CharField(max_length=15, choices=STATUS, default="Offered")
     availability = models.CharField(max_length=15, choices=AVAILABILITY, default="Available")
+
+class Transactions(BaseModel):
+    PAYMENTS = (
+        ('mpesa', 'M-Pesa'),
+        ('airtelmoney', 'Airtel Money'),
+        ('cash', 'Cash')
+    )
+    carPlate = models.CharField(max_length=50)
+    paymentMethod = models.CharField(max_length=20, choices=PAYMENTS)
+    cost = models.PositiveIntegerField(default=0)
+    discount = models.PositiveIntegerField(default=0)
+    totalPaid = models.PositiveIntegerField(default=0)
+    service = models.ForeignKey(Services, on_delete=models.CASCADE, null=False)
+    employee = models.ForeignKey(Staff, on_delete=models.CASCADE, null=False)
