@@ -55,8 +55,11 @@
               {% endif %}
             </td>
             <td>
-              <button class="actionBtn editBtn">Edit</button>
-              <button class="actionBtn deleteBtn">Delete</button>
+              <form action="{% url 'services' %}" method="post">
+                {% csrf_token %}
+                <button class="actionBtn editBtn">Edit</button>
+                <button class="actionBtn deleteBtn">Delete</button>
+              </form>
             </td>
           </tr>
           {% endfor %}

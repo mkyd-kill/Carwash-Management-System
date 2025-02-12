@@ -17,16 +17,13 @@ menuBtn.addEventListener("click", () => {
 
 // making a ul.li navlink active
 document.addEventListener("DOMContentLoaded", () => {
-    const sidebarLinks = document.querySelectorAll(".sidebarlink");
+    const sidebarLinks = document.querySelectorAll(".sidebarLink");
+    const currentPath = window.location.pathname;
 
     sidebarLinks.forEach(link => {
-        link.addEventListener("click", () => {
-            sidebarLinks.forEach((link) =>
-                link.querySelector(".sidebarListItem").classList.remove("active")
-            );
-
+        if (link.getAttribute('href') === currentPath && currentPath.length > 2) {
             link.querySelector(".sidebarListItem").classList.add("active");
-        });
+        }
     });
 });
 
