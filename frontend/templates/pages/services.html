@@ -41,18 +41,10 @@
             <td>{{ service.cost }}</td>
             <td>{{ service.discount }}</td>
             <td>
-              {% if service.status == 'offered' %}
-              <span class="status active">{{ service.status }}</span>
-              {% else %}
-              <span class="status inactive">{{ service.status }}</span>
-              {% endif %}
+              <span class="status {% if service.status == 'offered' %} active {% else %} inactive {% endif %}">{{ service.status }}</span>
             </td>
             <td>
-              {% if service.availability == 'available' %}
-              <span class="status active">{{ service.availability }}</span>
-              {% else %}
-              <span class="status inactive">{{ service.availability }}</span>
-              {% endif %}
+              <span class="status {% if service.availability == 'available' %} active {% else %} inactive {% endif %}">{{ service.availability }}</span>
             </td>
             <td>
               <form action="{% url 'services' %}" method="POST">

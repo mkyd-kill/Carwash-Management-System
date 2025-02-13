@@ -48,11 +48,7 @@
             <td>{{ staff.commission }}</td>
             <td>{{ staff.salary }}</td>
             <td>
-              {% if staff.status == 'active' %}
-              <span class="status active">{{ staff.status }}</span>
-              {% else %}
-              <span class="status inactive">{{ staff.status }}</span>
-              {% endif %}
+              <span class="status {% if staff.status == 'active' %} active {% else %} inactive {% endif %}">{{ staff.status }}</span>
             </td>
             <td>
               <button class="viewDetail actionBtn editBtn">

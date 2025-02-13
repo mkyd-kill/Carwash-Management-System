@@ -69,11 +69,7 @@
         </div>
         <div class="item-detail">
           <span>Status:</span>
-          {% if staff.status == 'active' %}
-          <strong class="status active">{{ staff.status }}</strong>
-          {% else %}
-          <strong class="status inactive">{{ staff.status }}</strong>
-          {% endif %}
+          <strong class="status {% if staff.status == 'active' %} active {% else %} inactive {% endif %}">{{ staff.status }}</strong>
         </div>
       </div>
     </div>
