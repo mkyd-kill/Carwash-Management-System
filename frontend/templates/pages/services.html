@@ -49,7 +49,7 @@
             <td>
               <form action="{% url 'services' %}" method="POST">
                 {% csrf_token %}
-                <button class="actionBtn editBtn">Edit</button>
+                <button class="actionBtn editBtn" onclick="displayUpdateDiv();">Edit</button>
                 <button class="actionBtn deleteBtn" name="delete" value="{{ service.id }}">Delete</button>
               </form>
             </td>
@@ -85,4 +85,12 @@
     </form>
   </div>
 </section>
+{% endblock %} {% block script %}
+<script>
+  function displayUpdateDiv() {
+    return `
+    <div>Hello World</div>
+    `
+  }
+</script>
 {% endblock %}

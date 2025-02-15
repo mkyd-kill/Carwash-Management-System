@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.hashers import check_password
 from .models import Staff, SiteAdmin, Services
 from .forms import AdminForm, StaffForm, ServiceForm
 
@@ -13,8 +14,9 @@ def login_for_access_token(request):
         password = request.POST.get('password')
 
         staff = SiteAdmin.objects.filter(username=username).first()
-        if staff and staff.password and staff.check_password(password):
-            user = authenticate(request, username=username, password=password)
+        if staff and staff.check_password(password):
+            user = authenticate(request, username=username, password=staff.password)
+            print(f"User: {user}")
             if user:
                 login(request, user)
                 return redirect("dashboard")

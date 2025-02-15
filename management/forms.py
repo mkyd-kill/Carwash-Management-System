@@ -22,7 +22,7 @@ class AdminForm(forms.Form):
         return email
     
     def save(self, commit=True):
-        user = super().save(commit=False)
+        user = SiteAdmin()
         user.password = make_password(self.cleaned_data["password"])
         user.is_active = False
         if commit:

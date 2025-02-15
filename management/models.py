@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 from shortuuid.django_fields import ShortUUIDField
 from django.utils import timezone
 
@@ -7,10 +8,8 @@ class BaseModel(models.Model):
     updated_at = timezone.now()
     created_at = models.DateTimeField(default=timezone.now)
 
-class SiteAdmin(BaseModel):
-    username = models.CharField(max_length=100)
-    email = models.EmailField(unique=True)
-    password = models.CharField(max_length=256)
+class SiteAdmin(BaseModel, AbstractUser):
+    pass
 
 class Staff(BaseModel):
     GENDER = (
