@@ -1,11 +1,14 @@
 from django.urls import path
+from django.contrib.auth import views as auth
 from . import views
 
 urlpatterns = [
-    path("", views.index, name="index"),
-    path("token/", views.login_for_access_token, name="login-token"),
-    path("logout/", views.logout_access_token, name="logout"),
+    # auth paths
+    path('', auth.LoginView.as_view(template_name='auth/login.html'), name='login'),
     path("new-registration/", views.post_register_form, name="register-new"),
+    path('logout/', auth.LogoutView.as_view(), name='logout'),
+
+    # cms paths
     path("dashboard/", views.dashboard, name="dashboard"),
     path("clients/", views.clients, name="clients"),
     path("reports/", views.report, name="reports"),

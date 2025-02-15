@@ -1,9 +1,0 @@
-{% if messages %} {% for message in messages %} {% if message == 'success' %}
-<div class="alert-msg success">
-  <p>{{ message }}</p>
-</div>
-{% else %}
-<div class="alert-msg danger">
-  <p>{{ message }}</p>
-</div>
-{% endif %} {% endfor %} {% endif %}

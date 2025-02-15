@@ -1,47 +1,19 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
-from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.hashers import check_password
-from .models import Staff, SiteAdmin, Services
-from .forms import AdminForm, StaffForm, ServiceForm
-
-def index(request):
-    return render(request, "login.html")
-
-def login_for_access_token(request):
-    if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-
-        staff = SiteAdmin.objects.filter(username=username).first()
-        if staff and staff.check_password(password):
-            user = authenticate(request, username=username, password=staff.password)
-            print(f"User: {user}")
-            if user:
-                login(request, user)
-                return redirect("dashboard")
-            messages.error(request, "Invalid Credentials")
-        else:
-            messages.error(request, "Incorrect Username or Password")
-    return redirect("index")
-
-
-def logout_access_token(request):
-    logout(request)
-    return redirect("index")
-
+from .models import Staff, Services
+from .forms import StaffForm, ServiceForm, AdminCreationForm
 
 def post_register_form(request):
     if request.method == 'POST':
-        form = AdminForm(request.POST)
+        form = AdminCreationForm(request.POST)
+
         if form.is_valid():
-            form.save()
-            messages.success(request, "Account Created Successfully!")
-            return redirect("index")
-        else:
-            for error in form.errors.values():
-                messages.error(request, error)
-    return redirect("index")
+            staff = form.save()
+            if staff:
+                return redirect("")
+    else:
+        form = AdminCreationForm()
+    return render(request, 'auth/register.html', {'form': form})
 
 def dashboard(request):
     return render(request, "pages/dashboard.html")

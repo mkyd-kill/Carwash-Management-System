@@ -8,8 +8,9 @@ class BaseModel(models.Model):
     updated_at = timezone.now()
     created_at = models.DateTimeField(default=timezone.now)
 
-class SiteAdmin(BaseModel, AbstractUser):
-    pass
+class SiteAdmin(AbstractUser):
+    is_staff = models.BooleanField(default=True)
+    is_admin = models.BooleanField(default=False)
 
 class Staff(BaseModel):
     GENDER = (
