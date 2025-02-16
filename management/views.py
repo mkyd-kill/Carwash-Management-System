@@ -78,16 +78,15 @@ def staffs(request):
             get_object_or_404(Staff, pk=request.POST.get("delete")).delete()
             return redirect("staffs")
         
+        if 'view' in request.POST:
+            staff = Staff.objects.get(pk=request.POST.get("view"))
+            return render(request, "pages/details.html", {'staff': staff})
+        
     context = {
         "data": Staff.objects.all(),
         "form": StaffForm()
     }
     return render(request, "pages/staff.html", context)
-
-@login_required
-def get_one_staff(request, id: int):
-    staff = Staff.objects.get(pk=id)
-    return render(request, "pages/details.html", {"staff": staff})
 
 @login_required
 def update_staff(request, id: int):

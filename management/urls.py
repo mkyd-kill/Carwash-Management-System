@@ -16,7 +16,6 @@ urlpatterns = [
     path("services/", views.services, name="services"),
     path("accounts/profile/", views.settings, name="settings"),
     path("staffs/", views.staffs, name="staffs"),
-    path("staff-details/<int:id>/", views.get_one_staff, name="details"),
     path("update-staff/<int:id>/", views.update_staff, name="update"),
     path("transactions/", views.transactions, name="transactions")
 ]

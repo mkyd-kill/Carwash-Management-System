@@ -51,9 +51,10 @@
               <span class="status {% if staff.status == 'active' %} active {% else %} inactive {% endif %}">{{ staff.status }}</span>
             </td>
             <td>
-              <button class="viewDetail actionBtn editBtn">
-                <a href="{% url 'details' staff.id %}">View</a>
-              </button>
+              <form action="{% url 'staffs' %}" method="POST">
+                {% csrf_token %}
+                <button class="actionBtn editBtn" name="view" value="{{ staff.id }}">View</button>
+              </form>
             </td>
           </tr>
           {% endfor %}
