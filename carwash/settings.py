@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',
+    'crispy_bootstrap5',
     'management'
 ]
 
@@ -139,3 +141,8 @@ SESSION_COOKIE_AGE = 1800 # set for 30 minutes
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False # Keep session active even after browser closes
 
 SESSION_SAVE_EVERY_REQUEST = True # Refresh session expiry at each request
+
+# crispy settings
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+CRISPY_TEMPLATE_PACK = "bootstrap5"
