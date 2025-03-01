@@ -146,3 +146,6 @@ SESSION_SAVE_EVERY_REQUEST = True # Refresh session expiry at each request
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
 CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+# logout redirect url
+LOGOUT_REDIRECT_URL = 'login'

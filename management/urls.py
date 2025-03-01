@@ -3,9 +3,10 @@ from django.contrib.auth import views as auth
 from . import views
 
 urlpatterns = [
+    path('', views.index, name="home"),
     # auth paths
     path('accounts/login/', auth.LoginView.as_view(template_name='auth/login.html'), name='login'),
-    path("new-registration/", views.post_register_form, name="register-new"),
+    path("register/", views.post_register_form, name="register"),
     path('logout/', auth.LogoutView.as_view(), name='logout'),
 
     # cms paths

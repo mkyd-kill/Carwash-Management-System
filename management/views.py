@@ -4,6 +4,9 @@ from django.contrib import messages
 from .models import Staff, Services
 from .forms import StaffForm, ServiceForm, AdminCreationForm
 
+def index(request):
+    return redirect('login')
+
 def post_register_form(request):
     if request.method == 'POST':
         form = AdminCreationForm(request.POST)
